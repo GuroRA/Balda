@@ -31,8 +31,8 @@
             RegistrtionButton = new Button();
             label1 = new Label();
             loginButton = new Button();
-            maskedTextBox1 = new MaskedTextBox();
-            textBox1 = new TextBox();
+            paswordTextBox = new MaskedTextBox();
+            loginTextBox = new TextBox();
             PaswordText = new Label();
             loginText = new Label();
             title = new Label();
@@ -79,23 +79,24 @@
             loginButton.TabIndex = 13;
             loginButton.Text = "Войти";
             loginButton.UseVisualStyleBackColor = false;
+            loginButton.Click += loginButton_Click;
             // 
-            // maskedTextBox1
+            // paswordTextBox
             // 
-            maskedTextBox1.Font = new Font("Berlin Sans FB", 12F);
-            maskedTextBox1.Location = new Point(391, 198);
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.PasswordChar = '*';
-            maskedTextBox1.Size = new Size(251, 29);
-            maskedTextBox1.TabIndex = 12;
+            paswordTextBox.Font = new Font("Berlin Sans FB", 12F);
+            paswordTextBox.Location = new Point(391, 198);
+            paswordTextBox.Name = "paswordTextBox";
+            paswordTextBox.PasswordChar = '*';
+            paswordTextBox.Size = new Size(251, 29);
+            paswordTextBox.TabIndex = 12;
             // 
-            // textBox1
+            // loginTextBox
             // 
-            textBox1.Font = new Font("Berlin Sans FB", 12F);
-            textBox1.Location = new Point(391, 145);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(251, 29);
-            textBox1.TabIndex = 11;
+            loginTextBox.Font = new Font("Berlin Sans FB", 12F);
+            loginTextBox.Location = new Point(391, 145);
+            loginTextBox.Name = "loginTextBox";
+            loginTextBox.Size = new Size(251, 29);
+            loginTextBox.TabIndex = 11;
             // 
             // PaswordText
             // 
@@ -146,8 +147,8 @@
             Controls.Add(RegistrtionButton);
             Controls.Add(label1);
             Controls.Add(loginButton);
-            Controls.Add(maskedTextBox1);
-            Controls.Add(textBox1);
+            Controls.Add(paswordTextBox);
+            Controls.Add(loginTextBox);
             Controls.Add(PaswordText);
             Controls.Add(loginText);
             Controls.Add(title);
@@ -162,8 +163,8 @@
         private Button RegistrtionButton;
         private Label label1;
         private Button loginButton;
-        private MaskedTextBox maskedTextBox1;
-        private TextBox textBox1;
+        private MaskedTextBox paswordTextBox;
+        private TextBox loginTextBox;
         private Label PaswordText;
         private Label loginText;
         private Label title;
