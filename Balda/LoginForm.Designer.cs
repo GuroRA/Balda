@@ -97,6 +97,7 @@
             loginTextBox.Name = "loginTextBox";
             loginTextBox.Size = new Size(251, 29);
             loginTextBox.TabIndex = 11;
+            loginTextBox.TextChanged += loginTextBox_TextChanged;
             // 
             // PaswordText
             // 

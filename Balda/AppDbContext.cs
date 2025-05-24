@@ -5,6 +5,7 @@ namespace Balda
     public class AppDbContext : DbContext
     {
         public DbSet<UserEntity> Users { get; set; }
+        public DbSet<Game> Games { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

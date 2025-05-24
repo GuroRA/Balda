@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            Column5 = new DataGridViewButtonColumn();
-            Column4 = new DataGridViewButtonColumn();
-            Column3 = new DataGridViewButtonColumn();
-            Column2 = new DataGridViewButtonColumn();
-            Column1 = new DataGridViewButtonColumn();
             GameField = new DataGridView();
             label1 = new Label();
             label2 = new Label();
@@ -43,51 +38,13 @@
             label6 = new Label();
             textBox1 = new TextBox();
             button1 = new Button();
+            Column1 = new DataGridViewButtonColumn();
+            Column2 = new DataGridViewButtonColumn();
+            Column3 = new DataGridViewButtonColumn();
+            Column4 = new DataGridViewButtonColumn();
+            Column5 = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)GameField).BeginInit();
             SuspendLayout();
-            // 
-            // Column5
-            // 
-            Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Column5.FlatStyle = FlatStyle.Flat;
-            Column5.HeaderText = "";
-            Column5.MinimumWidth = 6;
-            Column5.Name = "Column5";
-            Column5.Width = 125;
-            // 
-            // Column4
-            // 
-            Column4.FlatStyle = FlatStyle.Flat;
-            Column4.HeaderText = "";
-            Column4.MinimumWidth = 6;
-            Column4.Name = "Column4";
-            Column4.Width = 125;
-            // 
-            // Column3
-            // 
-            Column3.FlatStyle = FlatStyle.Flat;
-            Column3.HeaderText = "";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.Width = 125;
-            // 
-            // Column2
-            // 
-            Column2.FlatStyle = FlatStyle.Flat;
-            Column2.HeaderText = "";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.Width = 125;
-            // 
-            // Column1
-            // 
-            Column1.FlatStyle = FlatStyle.Flat;
-            Column1.HeaderText = "";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.Resizable = DataGridViewTriState.True;
-            Column1.UseColumnTextForButtonValue = true;
-            Column1.Width = 125;
             // 
             // GameField
             // 
@@ -97,10 +54,13 @@
             GameField.BackgroundColor = Color.White;
             GameField.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             GameField.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
-            GameField.Location = new Point(216, 172);
+            GameField.Location = new Point(263, 122);
+            GameField.MultiSelect = false;
             GameField.Name = "GameField";
             GameField.RowHeadersWidth = 51;
-            GameField.Size = new Size(365, 180);
+            GameField.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            GameField.ScrollBars = ScrollBars.None;
+            GameField.Size = new Size(307, 312);
             GameField.TabIndex = 0;
             GameField.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -187,12 +147,62 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Berlin Sans FB", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.Black;
-            button1.Location = new Point(638, 385);
+            button1.Location = new Point(656, 385);
             button1.Name = "button1";
             button1.Size = new Size(132, 36);
             button1.TabIndex = 8;
             button1.Text = "Пропуск хода";
             button1.UseVisualStyleBackColor = false;
+            // 
+            // Column1
+            // 
+            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column1.FlatStyle = FlatStyle.Flat;
+            Column1.HeaderText = "";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.Resizable = DataGridViewTriState.False;
+            Column1.Width = 125;
+            // 
+            // Column2
+            // 
+            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column2.FlatStyle = FlatStyle.Flat;
+            Column2.HeaderText = "";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            Column2.Resizable = DataGridViewTriState.False;
+            Column2.Width = 125;
+            // 
+            // Column3
+            // 
+            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column3.FlatStyle = FlatStyle.Flat;
+            Column3.HeaderText = "";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            Column3.Resizable = DataGridViewTriState.False;
+            Column3.Width = 125;
+            // 
+            // Column4
+            // 
+            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column4.FlatStyle = FlatStyle.Flat;
+            Column4.HeaderText = "";
+            Column4.MinimumWidth = 6;
+            Column4.Name = "Column4";
+            Column4.Resizable = DataGridViewTriState.False;
+            Column4.Width = 125;
+            // 
+            // Column5
+            // 
+            Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column5.FlatStyle = FlatStyle.Flat;
+            Column5.HeaderText = "";
+            Column5.MinimumWidth = 6;
+            Column5.Name = "Column5";
+            Column5.Resizable = DataGridViewTriState.False;
+            Column5.Width = 125;
             // 
             // GameForm
             // 
@@ -218,12 +228,6 @@
         }
 
         #endregion
-
-        private DataGridViewButtonColumn Column5;
-        private DataGridViewButtonColumn Column4;
-        private DataGridViewButtonColumn Column3;
-        private DataGridViewButtonColumn Column2;
-        private DataGridViewButtonColumn Column1;
         private DataGridView GameField;
         private Label label1;
         private Label label2;
@@ -233,5 +237,10 @@
         private Label label6;
         private TextBox textBox1;
         private Button button1;
+        private DataGridViewButtonColumn Column1;
+        private DataGridViewButtonColumn Column2;
+        private DataGridViewButtonColumn Column3;
+        private DataGridViewButtonColumn Column4;
+        private DataGridViewButtonColumn Column5;
     }
 }

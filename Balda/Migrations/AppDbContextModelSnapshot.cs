@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Balda.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class UserDbContextModelSnapshot : ModelSnapshot
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -22,10 +22,38 @@ namespace Balda.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Balda.Game", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("BoardState")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("CurrentPlayerTurn")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("InitialWord")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Games");
+                });
+
             modelBuilder.Entity("Balda.UserEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("GameId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("ImageUrl")
@@ -44,7 +72,21 @@ namespace Balda.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("GameId");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Balda.UserEntity", b =>
+                {
+                    b.HasOne("Balda.Game", null)
+                        .WithMany("Users")
+                        .HasForeignKey("GameId");
+                });
+
+            modelBuilder.Entity("Balda.Game", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

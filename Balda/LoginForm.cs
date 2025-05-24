@@ -40,7 +40,7 @@
                     if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
                     {
                         var userId = user.Id;
-                        var lobbyForm = new LobbyForm();
+                        var lobbyForm = new LobbyForm(userId);
                         lobbyForm.Show();
                         this.Hide();
                     }
@@ -54,6 +54,11 @@
             {
                 MessageBox.Show($"Ошибка: {ex.Message}");
             }
+        }
+
+        private void loginTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
