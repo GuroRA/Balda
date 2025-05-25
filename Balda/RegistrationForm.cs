@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using NLog;
+using System.Text.RegularExpressions;
 
 namespace Balda
 {
@@ -8,6 +9,8 @@ namespace Balda
         {
             InitializeComponent();
         }
+
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         private void CheckFormValidation()
         {
@@ -43,6 +46,8 @@ namespace Balda
             {
                 using (var db = new AppDbContext())
                 {
+                    Logger.Info("Начало регистрации");
+
                     if (db.Users.Any(u => u.Name == loginTextBox.Text))
                     {
                         MessageBox.Show("Этот логин уже занят");
@@ -59,7 +64,7 @@ namespace Balda
                     db.SaveChanges();
 
                     MessageBox.Show("Вы успешно зарегистрировались!");
-
+                    Logger.Info("Пользователь зарегестрировался");
                     var loginForm = new LoginForm();
                     loginForm.Show();
                     this.Close();
@@ -67,22 +72,9 @@ namespace Balda
             }
             catch (Exception ex)
             {
-                // Запись информации об исключении
-                Console.WriteLine("Ошибка при сохранении пользователя:");
-                Console.WriteLine(ex.Message);
-                if (ex.InnerException != null)
-                {
-                    Console.WriteLine("Внутреннее исключение:");
-                    Console.WriteLine(ex.InnerException.Message);
-                    Console.WriteLine(ex.InnerException.StackTrace); // Это может быть очень полезно!
-                }
-                else
-                {
-                    Console.WriteLine("Внутреннего исключения нет.");
-                }
-                // Также можно использовать:
-                MessageBox.Show("Ошибка при регистрации. Подробности записаны в консоль/файл."); // Сообщите пользователю об ошибке
-                return; // Прекратите выполнение функции регистрации
+                Logger.Info("не удалось сохранить пользователя");
+                Console.WriteLine($"Ошибка при сохранении пользователя: {ex.Message}");
+                return;
             }
         }
 

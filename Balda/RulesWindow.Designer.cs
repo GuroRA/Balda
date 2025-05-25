@@ -69,6 +69,7 @@
             Controls.Add(title);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "RulesWindow";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Правила игры";
             ResumeLayout(false);
             PerformLayout();

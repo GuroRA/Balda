@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using NLog;
+using System.Text;
 
 namespace Balda
 {
@@ -11,6 +12,8 @@ namespace Balda
             InitializeComponent();
         }
 
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+
         private void CreateGame_Click(object sender, EventArgs e)
         {
             CreateNewGame(_userId, 2);
@@ -22,6 +25,7 @@ namespace Balda
 
             using (var db = new AppDbContext())
             {
+                Logger.Info("Начало генераии игры");
                 string boardState = GenerateInitialBoardState(initialWord);
 
                 var newGame = new Game
@@ -31,7 +35,7 @@ namespace Balda
                     CurrentPlayerTurn = creatorUserId,
                     InitialWord = initialWord
                 };
-
+                Logger.Info("Добавление игры в бд");
                 db.Games.Add(newGame);
                 db.SaveChanges();
 
@@ -54,9 +58,16 @@ namespace Balda
             StringBuilder sb = new StringBuilder(new string(' ', 25));
             for (int i = 0; i < 5; i++)
             {
-                sb[10 + i] = initialWord[i]; 
+                sb[10 + i] = initialWord[i];
             }
             return sb.ToString();
+        }
+
+        private void rulesButton_Click(object sender, EventArgs e)
+        {
+            Logger.Info("Пользователь открыл правила с игрой");
+            var RulesWindow = new RulesWindow();
+            RulesWindow.Show();
         }
     }
 }

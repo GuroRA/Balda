@@ -154,6 +154,7 @@
             Controls.Add(loginText);
             Controls.Add(title);
             Name = "LoginForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Вход";
             ResumeLayout(false);
             PerformLayout();

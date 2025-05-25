@@ -1,4 +1,6 @@
-﻿namespace Balda
+﻿using NLog;
+
+namespace Balda
 {
     public partial class LoginForm : Form
     {
@@ -6,6 +8,8 @@
         {
             InitializeComponent();
         }
+
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         private void RegistrtionButton_Click(object sender, EventArgs e)
         {
@@ -40,6 +44,7 @@
                     if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
                     {
                         var userId = user.Id;
+                        Logger.Info($"Пользователь авторизовался");
                         var lobbyForm = new LobbyForm(userId);
                         lobbyForm.Show();
                         this.Hide();
@@ -52,6 +57,7 @@
             }
             catch (Exception ex)
             {
+                Logger.Info($"Ошибка при авторизации", ex.Message);
                 MessageBox.Show($"Ошибка: {ex.Message}");
             }
         }

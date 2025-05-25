@@ -72,6 +72,7 @@
             rulesButton.TabIndex = 2;
             rulesButton.Text = "Правила";
             rulesButton.UseVisualStyleBackColor = false;
+            rulesButton.Click += rulesButton_Click;
             // 
             // LobbyForm
             // 
@@ -84,6 +85,7 @@
             Controls.Add(ConnectButton);
             Controls.Add(CreateGame);
             Name = "LobbyForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Лобби";
             ResumeLayout(false);
         }
