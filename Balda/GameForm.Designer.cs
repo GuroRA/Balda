@@ -225,6 +225,7 @@
             acceptButton.TabIndex = 9;
             acceptButton.Text = "Подтвердить ";
             acceptButton.UseVisualStyleBackColor = false;
+            acceptButton.Click += acceptButton_Click;
             // 
             // GameForm
             // 

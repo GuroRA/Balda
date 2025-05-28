@@ -12,7 +12,7 @@ namespace Balda
             InitializeComponent();
         }
 
-        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        private readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         private void CreateGame_Click(object sender, EventArgs e)
         {

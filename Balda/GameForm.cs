@@ -1,23 +1,36 @@
-﻿namespace Balda
+﻿using NLog;
+
+namespace Balda
 {
     public partial class GameForm : Form
     {
         private string[,] _boardState = new string[5, 5];
         private int _boardSize = 5;
         private Guid _gameId;
-        private Guid _creatorId;
+        private Guid _currentPlayerTurn;
         private DataGridViewCell _lastClickedLetterCell = null;
         private (int row, int col) _lastClickedEmptyCell = (-1, -1);
         private List<(int row, int col)> _availableCells = new List<(int row, int col)>();
         private List<(int row, int col)> _pressedLetterCells = new List<(int row, int col)>();
+        private List<string> _usedWords = new List<string>();
+        private readonly IWordValidator _wordValidator;
+
         public GameForm(Guid gameId, Guid creatorId)
         {
+            var directoryName =Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
+            var neededDirectory =Directory.GetParent(directoryName).Parent.Parent.ToString();
+            string dictionaryFilePath = Path.Combine(neededDirectory, "Sources", "dictionary.txt");
+            _wordValidator = new DictionaryWordValidator(dictionaryFilePath);
+
             _gameId = gameId;
-            _creatorId = creatorId;
+            _currentPlayerTurn = creatorId;
             InitializeComponent();
             InitializeBoard();
             LoadGameState();
         }
+
+        private readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        
 
         private void InitializeBoard()
         {
@@ -196,9 +209,84 @@
             }
         }
 
+        private void UpdatePlayerScore(int score)
+        {
+            using (var db = new AppDbContext())
+            {
+                var game = db.Games.Find(_gameId);
+                if (game != null)
+                {
+                    var currentPlayer = game.Users.FirstOrDefault(u => u.Id == _currentPlayerTurn);
+                    if (currentPlayer != null)
+                    {
+                        currentPlayer.Score += score;
+                        db.SaveChanges();
+                        Logger.Info($"Игрок {_currentPlayerTurn} получил очки, нынешнее кол-во: {currentPlayer.Score}");
+                    }
+                }
+            }
+        }
+
+
+        private void SwitchTurn()
+        {
+            using (var db = new AppDbContext())
+            {
+                var game = db.Games.Find(_gameId);
+                if (game != null)
+                {
+                    int currentPlayerIndex = game.Users.FindIndex(u => u.Id == _currentPlayerTurn);
+                    int nextPlayerIndex = (currentPlayerIndex + 1) % game.Users.Count;
+
+                    _currentPlayerTurn = game.Users[nextPlayerIndex].Id;
+                    game.CurrentPlayerTurn = _currentPlayerTurn;
+
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        private void ResetState()
+        {
+            wordTextBox.Clear();
+            _lastClickedLetterCell = null;
+            _lastClickedEmptyCell = (-1, -1);
+            _availableCells.Clear();
+            _pressedLetterCells.Clear();
+
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void acceptButton_Click(object sender, EventArgs e)
+        {
+            string word = wordTextBox.Text.Trim().ToLower();
+
+            if (string.IsNullOrEmpty(word))
+            {
+                MessageBox.Show("Введите слово.");
+                return;
+            }
+
+            if (!_wordValidator.IsValidWord(word))
+            {
+                MessageBox.Show("Такого слова не существует.");
+                ResetState();
+                UpdateButtonStates();
+                return;
+            }
+
+            _usedWords.Add(word);
+            Logger.Info($"Слово '{word}' добавленно список использованных слов");
+
+            int score = word.Length;
+
+            UpdatePlayerScore(score);
+            //SwitchTurn();
+            LoadGameState();
         }
     }
 }
