@@ -285,7 +285,7 @@ namespace Balda
             int score = word.Length;
 
             UpdatePlayerScore(score);
-            //SwitchTurn();
+            SwitchTurn();
             LoadGameState();
         }
     }

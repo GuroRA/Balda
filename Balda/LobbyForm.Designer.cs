@@ -59,6 +59,7 @@
             ConnectButton.TabIndex = 1;
             ConnectButton.Text = "Подключиться";
             ConnectButton.UseVisualStyleBackColor = false;
+            ConnectButton.Click += ConnectButton_Click;
             // 
             // rulesButton
             // 

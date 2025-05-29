@@ -1,4 +1,5 @@
-﻿using NLog;
+﻿using Microsoft.EntityFrameworkCore;
+using NLog;
 using System.Text;
 
 namespace Balda
@@ -6,6 +7,8 @@ namespace Balda
     public partial class LobbyForm : Form
     {
         private Guid _userId;
+        private Guid _gameId;
+        private Thread _pollingThread;
         public LobbyForm(Guid userId)
         {
             _userId = userId;
@@ -27,22 +30,118 @@ namespace Balda
             {
                 Logger.Info("Начало генераии игры");
                 string boardState = GenerateInitialBoardState(initialWord);
+                var creatorUser = db.Users.FirstOrDefault(u => u.Id == creatorUserId);
+                if (creatorUser == null)
+                {
+                    MessageBox.Show("Пользователь не найден.");
+                    return;
+                }
 
                 var newGame = new Game
                 {
                     BoardState = boardState,
                     IsActive = true,
                     CurrentPlayerTurn = creatorUserId,
+                    Users = new List<UserEntity> { creatorUser },
                     InitialWord = initialWord
                 };
                 Logger.Info("Добавление игры в бд");
                 db.Games.Add(newGame);
                 db.SaveChanges();
 
-                var gameForm = new GameForm(newGame.Id, creatorUserId);
-                gameForm.Show();
-                this.Hide();
+                _gameId = newGame.Id;
+                Clipboard.SetText(_gameId.ToString());
+                MessageBox.Show($"Id вашей игры: {newGame.Id} скопирован в буфер обмена");
+                WaitForSecondPlayer(newGame.Id);
             }
+        }
+
+        private void JoinGame(Guid gameId)
+        {
+            try
+            {
+                using (var db = new AppDbContext())
+                {
+                    var game = db.Games.Include(g => g.Users).FirstOrDefault(g => g.Id == gameId);
+                    if (game == null)
+                    {
+                        MessageBox.Show("Игра не найдена.");
+                        return;
+                    }
+
+                    if (game.Users.Any(p => p.Id == _userId))
+                    {
+                        MessageBox.Show("Вы уже в этой игре.");
+                        return;
+                    }
+
+                    if (game.Users.Count >= 2)
+                    {
+                        MessageBox.Show("В игре уже два игрока.");
+                        return;
+                    }
+
+                    var user = db.Users.FirstOrDefault(u => u.Id == _userId);
+                    if (user == null)
+                    {
+                        MessageBox.Show("Пользователь не найден.");
+                        return;
+                    }
+
+                    game.Users.Add(user);
+                    db.SaveChanges();
+                    Logger.Info($"Пользователь {_userId} присоединился к игре {gameId}");
+
+                    //Потенциально на расширение функционала
+                    if (game.Users.Count == 2)
+                    {
+                        OpenGameForm(gameId, _userId);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ожидание второго игрока...");
+                        WaitForSecondPlayer(gameId);
+                    }
+
+                    this.Hide();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, $"Не удалось подключиться к игре {gameId}");
+                MessageBox.Show($"Не удалось подключиться к игре: {ex.Message}");
+            }
+        }
+
+        private void WaitForSecondPlayer(Guid gameId)
+        {
+            _pollingThread = new Thread(() =>
+            {
+                while (true)
+                {
+                    using (var db = new AppDbContext())
+                    {
+                        var game = db.Games.Include(g => g.Users).FirstOrDefault(g => g.Id == gameId);
+                        if (game != null && game.Users.Count == 2)
+                        {
+                            Logger.Info("Второй игрок подключился. Запуск игры...");
+                            Invoke(new Action(() => {
+                                OpenGameForm(gameId, _userId);
+                            }));
+                            return;
+                        }
+                    }
+                    Thread.Sleep(500);
+                }
+            });
+            _pollingThread.Start();
+        }
+
+        private void OpenGameForm(Guid gameId, Guid userId)
+        {
+            var gameForm = new GameForm(gameId, userId);
+            gameForm.Show();
+            this.Hide();
         }
 
         private string GetRandomFiveLetterWord()
@@ -68,6 +167,18 @@ namespace Balda
             Logger.Info("Пользователь открыл правила с игрой");
             var RulesWindow = new RulesWindow();
             RulesWindow.Show();
+        }
+
+        private void ConnectButton_Click(object sender, EventArgs e)
+        {
+            using (var inputForm = new ImputGameIdForm())
+            {
+                if (inputForm.ShowDialog() == DialogResult.OK)
+                {
+                    Guid gameId = inputForm.GameId;
+                    JoinGame(gameId);
+                }
+            }
         }
     }
 }
