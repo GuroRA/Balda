@@ -1,4 +1,5 @@
 ﻿using NLog;
+using System.Windows.Forms;
 
 namespace Balda
 {
@@ -12,13 +13,14 @@ namespace Balda
         private (int row, int col) _lastClickedEmptyCell = (-1, -1);
         private List<(int row, int col)> _availableCells = new List<(int row, int col)>();
         private List<(int row, int col)> _pressedLetterCells = new List<(int row, int col)>();
+        private readonly Guid _localUserId;
         private List<string> _usedWords = new List<string>();
         private readonly IWordValidator _wordValidator;
 
-        public GameForm(Guid gameId, Guid creatorId)
+        public GameForm(Guid gameId, Guid creatorId, Guid localUserId)
         {
-            var directoryName =Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
-            var neededDirectory =Directory.GetParent(directoryName).Parent.Parent.ToString();
+            var directoryName = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
+            var neededDirectory = Directory.GetParent(directoryName).Parent.Parent.ToString();
             string dictionaryFilePath = Path.Combine(neededDirectory, "Sources", "dictionary.txt");
             _wordValidator = new DictionaryWordValidator(dictionaryFilePath);
 
@@ -27,10 +29,22 @@ namespace Balda
             InitializeComponent();
             InitializeBoard();
             LoadGameState();
+            _localUserId = localUserId;
         }
 
         private readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        
+
+        private void CheckWhoseTurn()
+        {
+            using (var db = new AppDbContext())
+            {
+                var game = db.Games.FirstOrDefault(g => g.Id == _gameId);
+                if (game != null)
+                {
+                    _currentPlayerTurn = game.CurrentPlayerTurn;
+                }
+            }
+        }
 
         private void InitializeBoard()
         {
@@ -59,6 +73,8 @@ namespace Balda
 
         private void LoadGameState()
         {
+
+            CheckWhoseTurn();
             using (var db = new AppDbContext())
             {
                 var game = db.Games.Find(_gameId);
@@ -99,6 +115,12 @@ namespace Balda
 
         private void GameField_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (_localUserId != _currentPlayerTurn)
+            {
+                MessageBox.Show("Сейчас не ваш ход!");
+                GameField.ClearSelection();
+                return;
+            }
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
             int row = e.RowIndex;
@@ -208,7 +230,6 @@ namespace Balda
                 }
             }
         }
-
         private void UpdatePlayerScore(int score)
         {
             using (var db = new AppDbContext())
@@ -235,11 +256,14 @@ namespace Balda
                 var game = db.Games.Find(_gameId);
                 if (game != null)
                 {
-                    int currentPlayerIndex = game.Users.FindIndex(u => u.Id == _currentPlayerTurn);
-                    int nextPlayerIndex = (currentPlayerIndex + 1) % game.Users.Count;
+                    if (game.Users == null || game.Users.Count == 0)
+                    {
+                        Logger.Warn("No players found in the game.");
+                        return;
+                    }
 
-                    _currentPlayerTurn = game.Users[nextPlayerIndex].Id;
-                    game.CurrentPlayerTurn = _currentPlayerTurn;
+                    Guid nextPlayerId = game.Users.FirstOrDefault(p => p.Id != _localUserId)?.Id ?? _localUserId;
+                    game.CurrentPlayerTurn = nextPlayerId;
 
                     db.SaveChanges();
                 }
@@ -263,6 +287,11 @@ namespace Balda
 
         private void acceptButton_Click(object sender, EventArgs e)
         {
+            if (_localUserId != _currentPlayerTurn)
+            {
+                MessageBox.Show("Сейчас не ваш ход!");
+                return; // Прерываем обработку, если не наш ход
+            }
             string word = wordTextBox.Text.Trim().ToLower();
 
             if (string.IsNullOrEmpty(word))

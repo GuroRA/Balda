@@ -52,7 +52,7 @@ namespace Balda
                 _gameId = newGame.Id;
                 Clipboard.SetText(_gameId.ToString());
                 MessageBox.Show($"Id вашей игры: {newGame.Id} скопирован в буфер обмена");
-                WaitForSecondPlayer(newGame.Id);
+                WaitForSecondPlayer(newGame.Id, newGame.CurrentPlayerTurn);
             }
         }
 
@@ -92,17 +92,6 @@ namespace Balda
                     db.SaveChanges();
                     Logger.Info($"Пользователь {_userId} присоединился к игре {gameId}");
 
-                    //Потенциально на расширение функционала
-                    if (game.Users.Count == 2)
-                    {
-                        OpenGameForm(gameId, _userId);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ожидание второго игрока...");
-                        WaitForSecondPlayer(gameId);
-                    }
-
                     this.Hide();
                 }
             }
@@ -113,7 +102,7 @@ namespace Balda
             }
         }
 
-        private void WaitForSecondPlayer(Guid gameId)
+        private void WaitForSecondPlayer(Guid gameId, Guid creatorId)
         {
             _pollingThread = new Thread(() =>
             {
@@ -126,7 +115,7 @@ namespace Balda
                         {
                             Logger.Info("Второй игрок подключился. Запуск игры...");
                             Invoke(new Action(() => {
-                                OpenGameForm(gameId, _userId);
+                                OpenGameForm(gameId, creatorId, _userId);
                             }));
                             return;
                         }
@@ -137,9 +126,10 @@ namespace Balda
             _pollingThread.Start();
         }
 
-        private void OpenGameForm(Guid gameId, Guid userId)
+        private void OpenGameForm(Guid gameId, Guid creatorId, Guid userId)
         {
-            var gameForm = new GameForm(gameId, userId);
+
+            var gameForm = new GameForm(gameId, creatorId, userId);
             gameForm.Show();
             this.Hide();
         }
