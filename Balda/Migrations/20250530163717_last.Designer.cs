@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Balda.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250524122305_Initial")]
-    partial class Initial
+    [Migration("20250530163717_last")]
+    partial class last
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,9 +58,6 @@ namespace Balda.Migrations
 
                     b.Property<Guid?>("GameId")
                         .HasColumnType("uuid");
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()

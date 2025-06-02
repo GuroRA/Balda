@@ -11,5 +11,12 @@ namespace Balda
         {
             optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=usersbd;Username=postgres;Password=gevgehev");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Configure the relationship between Game and UserEntity (Players)
+            modelBuilder.Entity<Game>()
+                .HasMany(g => g.Users);
+        }
     }
 }

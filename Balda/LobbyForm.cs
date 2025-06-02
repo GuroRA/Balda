@@ -42,7 +42,7 @@ namespace Balda
                     BoardState = boardState,
                     IsActive = true,
                     CurrentPlayerTurn = creatorUserId,
-                    Users = new List<UserEntity> { creatorUser },
+                    Users = [creatorUser],
                     InitialWord = initialWord
                 };
                 Logger.Info("Добавление игры в бд");
@@ -92,6 +92,8 @@ namespace Balda
                     db.SaveChanges();
                     Logger.Info($"Пользователь {_userId} присоединился к игре {gameId}");
 
+                    OpenGameForm(gameId, _userId);
+
                     this.Hide();
                 }
             }
@@ -130,6 +132,14 @@ namespace Balda
         {
 
             var gameForm = new GameForm(gameId, creatorId, userId);
+            gameForm.Show();
+            this.Hide();
+        }
+
+        private void OpenGameForm(Guid gameId, Guid userId)
+        {
+
+            var gameForm = new GameForm(gameId, userId);
             gameForm.Show();
             this.Hide();
         }

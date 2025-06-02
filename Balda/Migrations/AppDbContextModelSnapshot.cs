@@ -56,9 +56,6 @@ namespace Balda.Migrations
                     b.Property<Guid?>("GameId")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("text");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             GameField = new DataGridView();
             Column1 = new DataGridViewButtonColumn();
             Column2 = new DataGridViewButtonColumn();
@@ -37,10 +37,10 @@
             Column4 = new DataGridViewButtonColumn();
             Column5 = new DataGridViewButtonColumn();
             label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
+            leftPlayerLabelName = new Label();
+            leftPlayerLabelScore = new Label();
+            rightPlayerLabelScore = new Label();
+            rightPlayerLableName = new Label();
             label6 = new Label();
             wordTextBox = new TextBox();
             skipButton = new Button();
@@ -54,9 +54,9 @@
             GameField.AllowUserToDeleteRows = false;
             GameField.AllowUserToResizeColumns = false;
             GameField.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Berlin Sans FB", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            GameField.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Berlin Sans FB", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GameField.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             GameField.BackgroundColor = Color.White;
             GameField.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             GameField.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
@@ -65,8 +65,8 @@
             GameField.Name = "GameField";
             GameField.RowHeadersWidth = 51;
             GameField.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            GameField.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            GameField.RowsDefaultCellStyle = dataGridViewCellStyle4;
             GameField.ScrollBars = ScrollBars.None;
             GameField.Size = new Size(307, 312);
             GameField.TabIndex = 0;
@@ -133,49 +133,50 @@
             label1.TabIndex = 1;
             label1.Text = "Игрок1";
             // 
-            // label2
+            // leftPlayerLabelName
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Berlin Sans FB", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(76, 69);
-            label2.Name = "label2";
-            label2.Size = new Size(91, 29);
-            label2.TabIndex = 2;
-            label2.Text = "Руслан";
+            leftPlayerLabelName.AutoSize = true;
+            leftPlayerLabelName.BackColor = Color.Transparent;
+            leftPlayerLabelName.Font = new Font("Berlin Sans FB", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            leftPlayerLabelName.Location = new Point(76, 69);
+            leftPlayerLabelName.Name = "leftPlayerLabelName";
+            leftPlayerLabelName.Size = new Size(91, 29);
+            leftPlayerLabelName.TabIndex = 2;
+            leftPlayerLabelName.Text = "Руслан";
             // 
-            // label3
+            // leftPlayerLabelScore
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Berlin Sans FB", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(76, 98);
-            label3.Name = "label3";
-            label3.Size = new Size(103, 29);
-            label3.TabIndex = 3;
-            label3.Text = "Счёт: 25";
+            leftPlayerLabelScore.AutoSize = true;
+            leftPlayerLabelScore.BackColor = Color.Transparent;
+            leftPlayerLabelScore.Font = new Font("Berlin Sans FB", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            leftPlayerLabelScore.Location = new Point(76, 98);
+            leftPlayerLabelScore.Name = "leftPlayerLabelScore";
+            leftPlayerLabelScore.Size = new Size(103, 29);
+            leftPlayerLabelScore.TabIndex = 3;
+            leftPlayerLabelScore.Text = "Счёт: 25";
             // 
-            // label4
+            // rightPlayerLabelScore
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Transparent;
-            label4.Font = new Font("Berlin Sans FB", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(618, 98);
-            label4.Name = "label4";
-            label4.Size = new Size(102, 29);
-            label4.TabIndex = 6;
-            label4.Text = "Счёт: 35";
+            rightPlayerLabelScore.AutoSize = true;
+            rightPlayerLabelScore.BackColor = Color.Transparent;
+            rightPlayerLabelScore.Font = new Font("Berlin Sans FB", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            rightPlayerLabelScore.Location = new Point(618, 98);
+            rightPlayerLabelScore.Name = "rightPlayerLabelScore";
+            rightPlayerLabelScore.Size = new Size(102, 29);
+            rightPlayerLabelScore.TabIndex = 6;
+            rightPlayerLabelScore.Text = "Счёт: 35";
+            rightPlayerLabelScore.Click += label4_Click;
             // 
-            // label5
+            // rightPlayerLableName
             // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Berlin Sans FB", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(618, 69);
-            label5.Name = "label5";
-            label5.Size = new Size(96, 29);
-            label5.TabIndex = 5;
-            label5.Text = "Анжела";
+            rightPlayerLableName.AutoSize = true;
+            rightPlayerLableName.BackColor = Color.Transparent;
+            rightPlayerLableName.Font = new Font("Berlin Sans FB", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            rightPlayerLableName.Location = new Point(618, 69);
+            rightPlayerLableName.Name = "rightPlayerLableName";
+            rightPlayerLableName.Size = new Size(96, 29);
+            rightPlayerLableName.TabIndex = 5;
+            rightPlayerLableName.Text = "Анжела";
             // 
             // label6
             // 
@@ -237,11 +238,11 @@
             Controls.Add(acceptButton);
             Controls.Add(skipButton);
             Controls.Add(wordTextBox);
-            Controls.Add(label4);
-            Controls.Add(label5);
+            Controls.Add(rightPlayerLabelScore);
+            Controls.Add(rightPlayerLableName);
             Controls.Add(label6);
-            Controls.Add(label3);
-            Controls.Add(label2);
+            Controls.Add(leftPlayerLabelScore);
+            Controls.Add(leftPlayerLabelName);
             Controls.Add(label1);
             Controls.Add(GameField);
             Name = "GameForm";
@@ -254,10 +255,10 @@
         #endregion
         private DataGridView GameField;
         private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
+        private Label leftPlayerLabelName;
+        private Label leftPlayerLabelScore;
+        private Label rightPlayerLabelScore;
+        private Label rightPlayerLableName;
         private Label label6;
         private TextBox wordTextBox;
         private Button skipButton;

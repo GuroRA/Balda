@@ -1,5 +1,7 @@
-﻿using NLog;
-using System.Windows.Forms;
+﻿using Microsoft.EntityFrameworkCore;
+using NLog;
+using System.Diagnostics.Metrics;
+using System.Text;
 
 namespace Balda
 {
@@ -9,12 +11,19 @@ namespace Balda
         private int _boardSize = 5;
         private Guid _gameId;
         private Guid _currentPlayerTurn;
+        private readonly Guid _localUserId;
+        private Guid? _leftPlayerId;
+        private Guid? _rightPlayerId;
+        private List<UserEntity> _users;
+
         private DataGridViewCell _lastClickedLetterCell = null;
         private (int row, int col) _lastClickedEmptyCell = (-1, -1);
         private List<(int row, int col)> _availableCells = new List<(int row, int col)>();
         private List<(int row, int col)> _pressedLetterCells = new List<(int row, int col)>();
-        private readonly Guid _localUserId;
         private List<string> _usedWords = new List<string>();
+
+        private Thread _pollingThread;
+
         private readonly IWordValidator _wordValidator;
 
         public GameForm(Guid gameId, Guid creatorId, Guid localUserId)
@@ -26,10 +35,34 @@ namespace Balda
 
             _gameId = gameId;
             _currentPlayerTurn = creatorId;
+            _localUserId = localUserId;
             InitializeComponent();
             InitializeBoard();
             LoadGameState();
+            UpdateButtonStates();
+            CheckWhoseTurn();
+            LoadPlayers();
+        }
+
+        private List<(int row, int col, char letter)> _newLetters = new List<(int row, int col, char letter)>();
+
+        public GameForm(Guid gameId, Guid localUserId)
+        {
+            var directoryName = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
+            var neededDirectory = Directory.GetParent(directoryName).Parent.Parent.ToString();
+            string dictionaryFilePath = Path.Combine(neededDirectory, "Sources", "dictionary.txt");
+            _wordValidator = new DictionaryWordValidator(dictionaryFilePath);
+
+            _gameId = gameId;
             _localUserId = localUserId;
+            _currentPlayerTurn = _localUserId;
+            InitializeComponent();
+            InitializeBoard();
+            LoadGameState();
+            UpdateButtonStates();
+            CheckWhoseTurn();
+            LoadPlayers();
+            PollingMethod();
         }
 
         private readonly Logger Logger = LogManager.GetCurrentClassLogger();
@@ -38,7 +71,7 @@ namespace Balda
         {
             using (var db = new AppDbContext())
             {
-                var game = db.Games.FirstOrDefault(g => g.Id == _gameId);
+                var game = db.Games.Include(g => g.Users).FirstOrDefault(g => g.Id == _gameId);
                 if (game != null)
                 {
                     _currentPlayerTurn = game.CurrentPlayerTurn;
@@ -71,13 +104,26 @@ namespace Balda
             this.GameField.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(GameField_CellClick);
         }
 
+        private void PollingMethod()
+        {
+            _pollingThread = new Thread(() =>
+            {
+                while (true)
+                {
+                    CheckGameState();
+                    Thread.Sleep(1000);
+                }
+            });
+            _pollingThread.Start();
+        }
+
         private void LoadGameState()
         {
 
             CheckWhoseTurn();
             using (var db = new AppDbContext())
             {
-                var game = db.Games.Find(_gameId);
+                var game = db.Games.Include(g => g.Users).FirstOrDefault(g => g.Id == _gameId);
                 if (game != null)
                 {
                     _boardState = ConvertStringTo2DArray(game.BoardState, _boardSize);
@@ -86,6 +132,26 @@ namespace Balda
                 }
             }
         }
+
+        private string[,] ConvertStringToArray(string boardStateString)
+        {
+            if (string.IsNullOrEmpty(boardStateString) || boardStateString.Length != 25)
+            {
+                return new string[5, 5];
+            }
+
+            string[,] board = new string[5, 5];
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    board[i, j] = boardStateString[i * 5 + j].ToString();
+                }
+            }
+            return board;
+        }
+
+
 
         private string[,] ConvertStringTo2DArray(string boardState, int boardSize)
         {
@@ -136,7 +202,6 @@ namespace Balda
             {
                 HandleEmptyCellClick(row, col);
             }
-
             UpdateButtonStates();
         }
 
@@ -175,10 +240,67 @@ namespace Balda
                 char selectedLetter = alphabetForm.SelectedLetter;
                 _boardState[row, col] = selectedLetter.ToString();
                 GameField.Rows[row].Cells[col].Value = selectedLetter.ToString();
+                _newLetters.Add((row, col, selectedLetter));
                 _lastClickedEmptyCell = (row, col);
                 UpdateBoard();
             }
             UpdateButtonStates();
+        }
+
+        private void LoadPlayers()
+        {
+            using (var db = new AppDbContext())
+            {
+                var game = db.Games.Include(g => g.Users).FirstOrDefault(g => g.Id == _gameId);
+                if (game != null && game.Users != null && game.Users.Count == 2)
+                {
+
+                    var player1 = game.Users.FirstOrDefault(p => p.Id == _localUserId);
+                    var player2 = game.Users.FirstOrDefault(p => p.Id != _localUserId);
+
+                    _leftPlayerId = player1?.Id;
+                    _rightPlayerId = player2?.Id;
+
+                }
+                UpdatePlayerLabels();
+            }
+        }
+
+        private void UpdatePlayerLabels()
+        {
+            using (var db = new AppDbContext())
+            {
+                if (_leftPlayerId.HasValue)
+                {
+                    var leftPlayer = db.Users.Find(_leftPlayerId.Value);
+                    if (leftPlayer != null)
+                    {
+                        leftPlayerLabelName.Text = $"{leftPlayer.Name}: {leftPlayer.Score}";
+                        leftPlayerLabelScore.Text = $"{leftPlayer.Score}";
+                    }
+                    else
+                    {
+                        leftPlayerLabelName.Text = "Left Player: N/A";
+                        leftPlayerLabelScore.Text = "Score: N/A";
+                    }
+                }
+
+                if (_rightPlayerId.HasValue)
+                {
+                    var rightPlayer = db.Users.Find(_rightPlayerId.Value);
+                    if (rightPlayer != null)
+                    {
+                        rightPlayerLableName.Text = $"{rightPlayer.Name}";
+                        rightPlayerLabelScore.Text = $"{rightPlayer.Score}";
+                    }
+                    else
+                    {
+                        rightPlayerLableName.Text = "Right Player: N/A";
+                        rightPlayerLabelScore.Text = "Score: N/A";
+
+                    }
+                }
+            }
         }
 
         private List<(int row, int col)> GetAdjacentCells(int row, int col)
@@ -230,20 +352,55 @@ namespace Balda
                 }
             }
         }
+
+        private void UpdateGameState()
+        {
+            string[,] boardStateCopy = (string[,])_boardState.Clone();
+
+            foreach (var (row, col, letter) in _newLetters)
+            {
+                boardStateCopy[row, col] = letter.ToString();
+            }
+
+            _boardState = boardStateCopy;
+
+
+            using (var db = new AppDbContext())
+            {
+                var game = db.Games.Include(g => g.Users).FirstOrDefault(g => g.Id == _gameId);
+                if (game != null)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < 5; i++)
+                    {
+                        for (int j = 0; j < 5; j++)
+                        {
+                            sb.Append(_boardState[i, j]);
+                        }
+                    }
+                    game.BoardState = sb.ToString();
+                    db.SaveChanges();
+                }
+            }
+            _newLetters.Clear();
+
+            LoadGameState();
+        }
+
         private void UpdatePlayerScore(int score)
         {
             using (var db = new AppDbContext())
             {
-                var game = db.Games.Find(_gameId);
+                var game = db.Games.Include(g => g.Users).FirstOrDefault(g => g.Id == _gameId);
                 if (game != null)
                 {
+                    var _game = game;
                     var currentPlayer = game.Users.FirstOrDefault(u => u.Id == _currentPlayerTurn);
-                    if (currentPlayer != null)
-                    {
-                        currentPlayer.Score += score;
-                        db.SaveChanges();
-                        Logger.Info($"Игрок {_currentPlayerTurn} получил очки, нынешнее кол-во: {currentPlayer.Score}");
-                    }
+                    currentPlayer.Score += score;
+                    db.Update(currentPlayer);
+                    UpdatePlayerLabels();
+                    db.SaveChanges();
+                    Logger.Info($"Игрок {_currentPlayerTurn} получил очки, нынешнее кол-во: {currentPlayer.Score}");
                 }
             }
         }
@@ -253,7 +410,7 @@ namespace Balda
         {
             using (var db = new AppDbContext())
             {
-                var game = db.Games.Find(_gameId);
+                var game = db.Games.Include(g => g.Users).FirstOrDefault(g => g.Id == _gameId);
                 if (game != null)
                 {
                     if (game.Users == null || game.Users.Count == 0)
@@ -262,14 +419,67 @@ namespace Balda
                         return;
                     }
 
-                    Guid nextPlayerId = game.Users.FirstOrDefault(p => p.Id != _localUserId)?.Id ?? _localUserId;
+                    Guid nextPlayerId = game.Users.First(p => p.Id != _localUserId).Id;
                     game.CurrentPlayerTurn = nextPlayerId;
 
                     db.SaveChanges();
+                    CheckWhoseTurn();
                 }
             }
         }
 
+        private int GetPlayerScore(Guid? playerId)
+        {
+            if (!playerId.HasValue)
+            {
+                return 0;
+            }
+
+            using (var db = new AppDbContext())
+            {
+                var user = db.Users.FirstOrDefault(u => u.Id == playerId.Value);
+                return user?.Score ?? 0;
+            }
+        }
+
+        private void CheckGameState()
+        {
+            using (var db = new AppDbContext())
+             {
+                var game = db.Games.Include(g => g.Users).FirstOrDefault(g => g.Id == _gameId);
+
+                if (game != null)
+                {
+                    bool hasChanges = false;
+
+                    string[,] gameBoardState = ConvertStringToArray(game.BoardState);
+
+                    if (game.CurrentPlayerTurn != _currentPlayerTurn)
+                    {
+                        _currentPlayerTurn = game.CurrentPlayerTurn;
+                        hasChanges = true;
+                    }
+
+                    int leftPlayerScore = game.Users.FirstOrDefault(p => p.Id == _leftPlayerId)?.Score ?? 0;
+                    if (leftPlayerScore != GetPlayerScore(_leftPlayerId))
+                    {
+                        hasChanges = true;
+                    }
+                    int rightPlayerScore = game.Users.FirstOrDefault(p => p.Id == _rightPlayerId)?.Score ?? 0;
+                    if (rightPlayerScore != GetPlayerScore(_rightPlayerId))
+                    {
+                        hasChanges = true;
+                    }
+
+                    if (hasChanges)
+                    {
+                        UpdatePlayerLabels();
+                        LoadGameState();
+                        UpdateButtonStates();
+                    }
+                }
+            }
+        }
         private void ResetState()
         {
             wordTextBox.Clear();
@@ -290,7 +500,7 @@ namespace Balda
             if (_localUserId != _currentPlayerTurn)
             {
                 MessageBox.Show("Сейчас не ваш ход!");
-                return; // Прерываем обработку, если не наш ход
+                return;
             }
             string word = wordTextBox.Text.Trim().ToLower();
 
@@ -314,8 +524,17 @@ namespace Balda
             int score = word.Length;
 
             UpdatePlayerScore(score);
-            SwitchTurn();
+            UpdatePlayerLabels();
+            UpdateGameState();
+            ResetState();
             LoadGameState();
+            SwitchTurn();
+            PollingMethod();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
