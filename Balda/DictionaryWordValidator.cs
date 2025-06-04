@@ -1,21 +1,28 @@
 ﻿using NLog;
 
-public interface IWordValidator
-{
-    bool IsValidWord(string word);
-}
-
-
-public class DictionaryWordValidator : IWordValidator
+/// <summary>
+/// Реализует интерфейс используя словарь загруженный из файла.
+/// </summary>
+public class DictionaryWordValidator : Balda.IWordValidator
 {
     private readonly Logger Logger = LogManager.GetCurrentClassLogger();
     private readonly HashSet<string> _validWords;
 
+    /// <summary>
+    /// Конструктор класса
+    /// </summary>
+    /// <param name="dictionaryFilePath"></param>
     public DictionaryWordValidator(string dictionaryFilePath)
     {
         _validWords = LoadWordsFromFile(dictionaryFilePath);
         
     }
+
+    /// <summary>
+    /// Проверка на валидность слова
+    /// </summary>
+    /// <param name="word"></param>
+    /// <returns></returns>
 
     public bool IsValidWord(string word)
     {

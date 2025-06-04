@@ -133,7 +133,7 @@
     <value>215, 38</value>
   </data>
   <data name="registrationButton.Text" xml:space="preserve">
-    <value>Зарегестрироваться</value>
+    <value>Зарегистрироваться</value>
   </data>
   <data name="paswordTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Berlin Sans FB, 12pt</value>
@@ -152,9 +152,6 @@
   </data>
   <data name="repeatPaswordTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>251, 29</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Inherit</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

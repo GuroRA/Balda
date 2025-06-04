@@ -1,10 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NLog;
-using System.Diagnostics.Metrics;
+using Castle.Windsor;
 using System.Text;
 
 namespace Balda
 {
+    /// <summary>
+    /// Форма с игрой
+    /// </summary>
     public partial class GameForm : Form
     {
         private string[,] _boardState = new string[5, 5];
@@ -16,22 +19,33 @@ namespace Balda
         private Guid? _rightPlayerId;
         private List<UserEntity> _users;
 
-        private DataGridViewCell _lastClickedLetterCell = null;
+        private DataGridViewCell? _lastClickedLetterCell = null;
         private (int row, int col) _lastClickedEmptyCell = (-1, -1);
         private List<(int row, int col)> _availableCells = new List<(int row, int col)>();
         private List<(int row, int col)> _pressedLetterCells = new List<(int row, int col)>();
         private List<string> _usedWords = new List<string>();
+        private List<(int row, int col, char letter)> _newLetters = new List<(int row, int col, char letter)>();
 
         private Thread _pollingThread;
 
         private readonly IWordValidator _wordValidator;
+        private readonly IWindsorContainer _container;
 
+        /// <summary>
+        /// Конструктор для создателя игры
+        /// </summary>
+        /// <param name="gameId"></param>
+        /// <param name="creatorId"></param>
+        /// <param name="localUserId"></param>
         public GameForm(Guid gameId, Guid creatorId, Guid localUserId)
         {
             var directoryName = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
             var neededDirectory = Directory.GetParent(directoryName).Parent.Parent.ToString();
             string dictionaryFilePath = Path.Combine(neededDirectory, "Sources", "dictionary.txt");
-            _wordValidator = new DictionaryWordValidator(dictionaryFilePath);
+
+            _container = new WindsorContainer();
+            _container.Install(new ValidatorsInstaller(dictionaryFilePath));
+            _wordValidator = _container.Resolve<IWordValidator>();
 
             _gameId = gameId;
             _currentPlayerTurn = creatorId;
@@ -42,16 +56,24 @@ namespace Balda
             UpdateButtonStates();
             CheckWhoseTurn();
             LoadPlayers();
+            PollingMethod();
         }
 
-        private List<(int row, int col, char letter)> _newLetters = new List<(int row, int col, char letter)>();
-
+        /// <summary>
+        /// Конструктор для подключающегося игрока
+        /// </summary>
+        /// <param name="gameId"></param>
+        /// <param name="localUserId"></param>
         public GameForm(Guid gameId, Guid localUserId)
         {
             var directoryName = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
             var neededDirectory = Directory.GetParent(directoryName).Parent.Parent.ToString();
             string dictionaryFilePath = Path.Combine(neededDirectory, "Sources", "dictionary.txt");
-            _wordValidator = new DictionaryWordValidator(dictionaryFilePath);
+
+
+            _container = new WindsorContainer();
+            _container.Install(new ValidatorsInstaller(dictionaryFilePath));
+            _wordValidator = _container.Resolve<IWordValidator>();
 
             _gameId = gameId;
             _localUserId = localUserId;
@@ -120,7 +142,6 @@ namespace Balda
         private void LoadGameState()
         {
 
-            CheckWhoseTurn();
             using (var db = new AppDbContext())
             {
                 var game = db.Games.Include(g => g.Users).FirstOrDefault(g => g.Id == _gameId);
@@ -243,6 +264,8 @@ namespace Balda
                 _newLetters.Add((row, col, selectedLetter));
                 _lastClickedEmptyCell = (row, col);
                 UpdateBoard();
+
+                _newLetters.Add((row, col, selectedLetter));
             }
             UpdateButtonStates();
         }
@@ -275,7 +298,7 @@ namespace Balda
                     var leftPlayer = db.Users.Find(_leftPlayerId.Value);
                     if (leftPlayer != null)
                     {
-                        leftPlayerLabelName.Text = $"{leftPlayer.Name}: {leftPlayer.Score}";
+                        leftPlayerLabelName.Text = $"{leftPlayer.Name}";
                         leftPlayerLabelScore.Text = $"{leftPlayer.Score}";
                     }
                     else
@@ -445,7 +468,7 @@ namespace Balda
         private void CheckGameState()
         {
             using (var db = new AppDbContext())
-             {
+            {
                 var game = db.Games.Include(g => g.Users).FirstOrDefault(g => g.Id == _gameId);
 
                 if (game != null)
@@ -513,8 +536,45 @@ namespace Balda
             if (!_wordValidator.IsValidWord(word))
             {
                 MessageBox.Show("Такого слова не существует.");
+                clearField();
                 ResetState();
-                UpdateButtonStates();
+                return;
+            }
+
+            bool isWordHasNewLetter = false;
+            foreach (var (row, col, letter) in _newLetters)
+            {
+
+                if (_boardState[row, col] != null)
+                {
+                    char newLetter = Convert.ToChar(_boardState[row, col].ToLower());
+                    for (int i = 0; i < word.Length; i++)
+                    {
+                        if (word[i] == newLetter)
+                        {
+                            isWordHasNewLetter = true;
+                            break;
+                        }
+                    }
+                }
+                if (isWordHasNewLetter)
+                {
+                    break;
+                }
+            }
+
+            if (!isWordHasNewLetter)
+            {
+                MessageBox.Show("Слово должно содержать добавленную букву.");
+                ResetState();
+                return;
+            }
+
+            if (_usedWords.Contains(word))
+            {
+                MessageBox.Show("Такое слово уже было использовано.");
+                clearField();
+                ResetState();
                 return;
             }
 
@@ -523,18 +583,100 @@ namespace Balda
 
             int score = word.Length;
 
+            if (IsBoardFull())
+            {
+                EndGame();
+                return;
+            }
+
             UpdatePlayerScore(score);
             UpdatePlayerLabels();
             UpdateGameState();
             ResetState();
             LoadGameState();
             SwitchTurn();
-            PollingMethod();
+        }
+
+        private void clearField()
+        {
+            if (_lastClickedEmptyCell.row != -1 && _lastClickedEmptyCell.col != -1)
+            {
+                (int row, int col) = _lastClickedEmptyCell;
+
+                _boardState[row, col] = " ";
+
+                GameField.Rows[row].Cells[col].Value = " ";
+
+                _newLetters.RemoveAll(item => item.row == row && item.col == col);
+
+                _lastClickedEmptyCell = (-1, -1);
+
+                UpdateBoard();
+                UpdateButtonStates();
+            }
+            else
+            {
+                MessageBox.Show("Нет буквы для удаления.");
+            }
+        }
+
+        private bool IsBoardFull()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    if (_boardState[i, j] == " ")
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private void EndGame()
+        {
+            Guid winnerId = (Guid)_leftPlayerId;
+            if (GetPlayerScore(_rightPlayerId) > GetPlayerScore(_leftPlayerId))
+            {
+                winnerId = (Guid)_rightPlayerId;
+            }
+
+            string winnerName = string.Empty;
+            int winnerScore = 0;
+            using (var db = new AppDbContext())
+            {
+                var winner = db.Users.Find(winnerId);
+                winnerName = winner.Name;
+                winnerScore = winner.Score;
+                var game = db.Games.Find(_gameId);
+                db.Games.Remove(game);
+                var leftPlayer = db.Users.Find(_leftPlayerId);
+                leftPlayer.Score = 0;
+                var rightPlayer = db.Users.Find(_rightPlayerId);
+                rightPlayer.Score = 0;
+                db.SaveChanges();
+                UpdatePlayerLabels();
+            }
+
+            MessageBox.Show($"Игра окончена! Победитель: {winnerName} ({winnerScore} очков)", "Конец игры");
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            clearField();
+        }
+
+        private void skipButton_Click(object sender, EventArgs e)
+        {
+            clearField();
+            SwitchTurn();
         }
     }
 }

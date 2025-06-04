@@ -2,8 +2,14 @@
 
 namespace Balda
 {
+    /// <summary>
+    /// Форма логина также начальная точка
+    /// </summary>
     public partial class LoginForm : Form
     {
+        /// <summary>
+        /// Конструктор формы инициализирующий форму
+        /// </summary>
         public LoginForm()
         {
             InitializeComponent();
@@ -62,9 +68,5 @@ namespace Balda
             }
         }
 
-        private void loginTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -1,9 +1,18 @@
 ﻿namespace Balda
 {
+    /// <summary>
+    /// Форма с алфавитом
+    /// </summary>
     public partial class AlphabetForm : Form
     {
+        /// <summary>
+        /// Выбранная буква из алфавита
+        /// </summary>
         public char SelectedLetter { get; private set; }
 
+        /// <summary>
+        /// Конструктор класса
+        /// </summary>
         public AlphabetForm()
         {
             InitializeComponent();

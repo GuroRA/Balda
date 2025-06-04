@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             GameField = new DataGridView();
             Column1 = new DataGridViewButtonColumn();
             Column2 = new DataGridViewButtonColumn();
@@ -45,6 +45,7 @@
             wordTextBox = new TextBox();
             skipButton = new Button();
             acceptButton = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)GameField).BeginInit();
             SuspendLayout();
             // 
@@ -54,9 +55,9 @@
             GameField.AllowUserToDeleteRows = false;
             GameField.AllowUserToResizeColumns = false;
             GameField.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Berlin Sans FB", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            GameField.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Berlin Sans FB", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GameField.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             GameField.BackgroundColor = Color.White;
             GameField.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             GameField.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
@@ -65,8 +66,8 @@
             GameField.Name = "GameField";
             GameField.RowHeadersWidth = 51;
             GameField.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            GameField.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            GameField.RowsDefaultCellStyle = dataGridViewCellStyle2;
             GameField.ScrollBars = ScrollBars.None;
             GameField.Size = new Size(307, 312);
             GameField.TabIndex = 0;
@@ -193,10 +194,9 @@
             // 
             wordTextBox.BackColor = Color.FromArgb(128, 64, 64);
             wordTextBox.BorderStyle = BorderStyle.None;
-            wordTextBox.Location = new Point(305, 60);
-            wordTextBox.Multiline = true;
+            wordTextBox.Location = new Point(319, 74);
             wordTextBox.Name = "wordTextBox";
-            wordTextBox.Size = new Size(208, 56);
+            wordTextBox.Size = new Size(208, 20);
             wordTextBox.TabIndex = 7;
             // 
             // skipButton
@@ -212,6 +212,7 @@
             skipButton.TabIndex = 8;
             skipButton.Text = "Пропуск хода";
             skipButton.UseVisualStyleBackColor = false;
+            skipButton.Click += skipButton_Click;
             // 
             // acceptButton
             // 
@@ -228,6 +229,21 @@
             acceptButton.UseVisualStyleBackColor = false;
             acceptButton.Click += acceptButton_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.White;
+            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Berlin Sans FB", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.Black;
+            button1.Location = new Point(99, 398);
+            button1.Name = "button1";
+            button1.Size = new Size(132, 36);
+            button1.TabIndex = 10;
+            button1.Text = "Очистить ";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // GameForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -235,6 +251,7 @@
             BackgroundImage = Properties.Resources.коричнеый_фон;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(acceptButton);
             Controls.Add(skipButton);
             Controls.Add(wordTextBox);
@@ -268,5 +285,6 @@
         private DataGridViewButtonColumn Column4;
         private DataGridViewButtonColumn Column5;
         private Button acceptButton;
+        private Button button1;
     }
 }

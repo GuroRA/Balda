@@ -3,8 +3,14 @@ using System.Text.RegularExpressions;
 
 namespace Balda
 {
+    /// <summary>
+    /// Форма регистрации
+    /// </summary>
     public partial class RegistrationForm : Form
     {
+        /// <summary>
+        /// Конструктор формы инициализирующий её
+        /// </summary>
         public RegistrationForm()
         {
             InitializeComponent();

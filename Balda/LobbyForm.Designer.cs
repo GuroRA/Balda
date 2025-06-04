@@ -43,7 +43,7 @@
             CreateGame.Name = "CreateGame";
             CreateGame.Size = new Size(276, 53);
             CreateGame.TabIndex = 0;
-            CreateGame.Text = "Создать";
+            CreateGame.Text = "Создать комнату";
             CreateGame.UseVisualStyleBackColor = false;
             CreateGame.Click += CreateGame_Click;
             // 
@@ -57,7 +57,7 @@
             ConnectButton.Name = "ConnectButton";
             ConnectButton.Size = new Size(276, 53);
             ConnectButton.TabIndex = 1;
-            ConnectButton.Text = "Подключиться";
+            ConnectButton.Text = "Подключиться к игре";
             ConnectButton.UseVisualStyleBackColor = false;
             ConnectButton.Click += ConnectButton_Click;
             // 
@@ -71,7 +71,7 @@
             rulesButton.Name = "rulesButton";
             rulesButton.Size = new Size(276, 53);
             rulesButton.TabIndex = 2;
-            rulesButton.Text = "Правила";
+            rulesButton.Text = "Правила игры";
             rulesButton.UseVisualStyleBackColor = false;
             rulesButton.Click += rulesButton_Click;
             // 

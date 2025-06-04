@@ -74,8 +74,7 @@
             Controls.Add(idLable);
             Name = "ImputGameIdForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "ImputGameIdForm";
-            Load += ImputGameIdForm_Load;
+            Text = "Id комнаты";
             ResumeLayout(false);
             PerformLayout();
         }

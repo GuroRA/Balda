@@ -4,11 +4,18 @@ using System.Text;
 
 namespace Balda
 {
+    /// <summary>
+    /// Форма лобби
+    /// </summary>
     public partial class LobbyForm : Form
     {
         private Guid _userId;
         private Guid _gameId;
         private Thread _pollingThread;
+        /// <summary>
+        /// Конструктор инициализирующий форму
+        /// </summary>
+        /// <param name="userId"></param>
         public LobbyForm(Guid userId)
         {
             _userId = userId;
@@ -146,6 +153,7 @@ namespace Balda
 
         private string GetRandomFiveLetterWord()
         {
+            // Надо подправить
             string[] fiveLetterWords = { "БАЛДА", "СЛОВО", "СИРОП", "ЛОДКА", "РЕБРО" };
             Random random = new Random();
             int index = random.Next(fiveLetterWords.Length);

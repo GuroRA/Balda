@@ -36,6 +36,7 @@
             PaswordText = new Label();
             loginText = new Label();
             title = new Label();
+            button1 = new Button();
             SuspendLayout();
             // 
             // RegistrtionButton
@@ -97,7 +98,6 @@
             loginTextBox.Name = "loginTextBox";
             loginTextBox.Size = new Size(251, 29);
             loginTextBox.TabIndex = 11;
-            loginTextBox.TextChanged += loginTextBox_TextChanged;
             // 
             // PaswordText
             // 
@@ -138,6 +138,20 @@
             title.TabIndex = 8;
             title.Text = "Вход";
             // 
+            // button1
+            // 
+            button1.AutoSize = true;
+            button1.BackColor = Color.Transparent;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Berlin Sans FB", 13.8F);
+            button1.ImeMode = ImeMode.NoControl;
+            button1.Location = new Point(295, 389);
+            button1.Name = "button1";
+            button1.Size = new Size(200, 38);
+            button1.TabIndex = 16;
+            button1.Text = "Сменить язык";
+            button1.UseVisualStyleBackColor = false;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -145,6 +159,7 @@
             BackgroundImage = Properties.Resources.коричнеый_фон;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(RegistrtionButton);
             Controls.Add(label1);
             Controls.Add(loginButton);
@@ -170,5 +185,6 @@
         private Label PaswordText;
         private Label loginText;
         private Label title;
+        private Button button1;
     }
 }

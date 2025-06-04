@@ -1,16 +1,20 @@
 ﻿namespace Balda
 {
+    /// <summary>
+    /// Форма для ввода id игры
+    /// </summary>
     public partial class ImputGameIdForm : Form
     {
+        /// <summary>
+        /// Id игры
+        /// </summary>
         public Guid GameId { get; private set; }
+        /// <summary>
+        /// Конструктор формы
+        /// </summary>
         public ImputGameIdForm()
         {
             InitializeComponent();
-        }
-
-        private void ImputGameIdForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void submitIdButton_Click(object sender, EventArgs e)
