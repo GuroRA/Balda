@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LobbyForm));
             CreateGame = new Button();
             ConnectButton = new Button();
             rulesButton = new Button();
@@ -35,59 +36,40 @@
             // 
             // CreateGame
             // 
+            resources.ApplyResources(CreateGame, "CreateGame");
             CreateGame.BackColor = Color.White;
             CreateGame.Cursor = Cursors.Hand;
-            CreateGame.FlatStyle = FlatStyle.Flat;
-            CreateGame.Font = new Font("Berlin Sans FB", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CreateGame.Location = new Point(266, 87);
             CreateGame.Name = "CreateGame";
-            CreateGame.Size = new Size(276, 53);
-            CreateGame.TabIndex = 0;
-            CreateGame.Text = "Создать комнату";
             CreateGame.UseVisualStyleBackColor = false;
             CreateGame.Click += CreateGame_Click;
             // 
             // ConnectButton
             // 
+            resources.ApplyResources(ConnectButton, "ConnectButton");
             ConnectButton.BackColor = Color.White;
             ConnectButton.Cursor = Cursors.Hand;
-            ConnectButton.FlatStyle = FlatStyle.Flat;
-            ConnectButton.Font = new Font("Berlin Sans FB", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ConnectButton.Location = new Point(266, 179);
             ConnectButton.Name = "ConnectButton";
-            ConnectButton.Size = new Size(276, 53);
-            ConnectButton.TabIndex = 1;
-            ConnectButton.Text = "Подключиться к игре";
             ConnectButton.UseVisualStyleBackColor = false;
             ConnectButton.Click += ConnectButton_Click;
             // 
             // rulesButton
             // 
+            resources.ApplyResources(rulesButton, "rulesButton");
             rulesButton.BackColor = Color.White;
             rulesButton.Cursor = Cursors.Hand;
-            rulesButton.FlatStyle = FlatStyle.Flat;
-            rulesButton.Font = new Font("Berlin Sans FB", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            rulesButton.Location = new Point(266, 271);
             rulesButton.Name = "rulesButton";
-            rulesButton.Size = new Size(276, 53);
-            rulesButton.TabIndex = 2;
-            rulesButton.Text = "Правила игры";
             rulesButton.UseVisualStyleBackColor = false;
             rulesButton.Click += rulesButton_Click;
             // 
             // LobbyForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.коричнеый_фон;
-            BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(800, 450);
             Controls.Add(rulesButton);
             Controls.Add(ConnectButton);
             Controls.Add(CreateGame);
             Name = "LobbyForm";
-            StartPosition = FormStartPosition.CenterParent;
-            Text = "Лобби";
             ResumeLayout(false);
         }
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             RegistrtionButton = new Button();
             label1 = new Label();
             loginButton = new Button();
@@ -41,124 +42,71 @@
             // 
             // RegistrtionButton
             // 
-            RegistrtionButton.AutoSize = true;
+            resources.ApplyResources(RegistrtionButton, "RegistrtionButton");
             RegistrtionButton.BackColor = Color.White;
-            RegistrtionButton.FlatStyle = FlatStyle.Flat;
-            RegistrtionButton.Font = new Font("Berlin Sans FB", 13.8F);
-            RegistrtionButton.ImeMode = ImeMode.NoControl;
-            RegistrtionButton.Location = new Point(444, 335);
             RegistrtionButton.Name = "RegistrtionButton";
-            RegistrtionButton.Size = new Size(200, 38);
-            RegistrtionButton.TabIndex = 15;
-            RegistrtionButton.Text = "Регистрация";
             RegistrtionButton.UseVisualStyleBackColor = false;
             RegistrtionButton.Click += RegistrtionButton_Click;
             // 
             // label1
             // 
-            label1.AutoSize = true;
+            resources.ApplyResources(label1, "label1");
             label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Berlin Sans FB Demi", 24F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(37, 23, 23);
-            label1.ImeMode = ImeMode.NoControl;
-            label1.Location = new Point(157, 328);
             label1.Name = "label1";
-            label1.Size = new Size(281, 45);
-            label1.TabIndex = 14;
-            label1.Text = "Нет аккаунта?";
             // 
             // loginButton
             // 
-            loginButton.AutoSize = true;
+            resources.ApplyResources(loginButton, "loginButton");
             loginButton.BackColor = Color.White;
-            loginButton.FlatStyle = FlatStyle.Flat;
-            loginButton.Font = new Font("Berlin Sans FB", 13.8F);
-            loginButton.ImeMode = ImeMode.NoControl;
-            loginButton.Location = new Point(321, 269);
             loginButton.Name = "loginButton";
-            loginButton.Size = new Size(200, 38);
-            loginButton.TabIndex = 13;
-            loginButton.Text = "Войти";
             loginButton.UseVisualStyleBackColor = false;
             loginButton.Click += loginButton_Click;
             // 
             // paswordTextBox
             // 
-            paswordTextBox.Font = new Font("Berlin Sans FB", 12F);
-            paswordTextBox.Location = new Point(391, 198);
+            resources.ApplyResources(paswordTextBox, "paswordTextBox");
             paswordTextBox.Name = "paswordTextBox";
             paswordTextBox.PasswordChar = '*';
-            paswordTextBox.Size = new Size(251, 29);
-            paswordTextBox.TabIndex = 12;
             // 
             // loginTextBox
             // 
-            loginTextBox.Font = new Font("Berlin Sans FB", 12F);
-            loginTextBox.Location = new Point(391, 145);
+            resources.ApplyResources(loginTextBox, "loginTextBox");
             loginTextBox.Name = "loginTextBox";
-            loginTextBox.Size = new Size(251, 29);
-            loginTextBox.TabIndex = 11;
             // 
             // PaswordText
             // 
-            PaswordText.AutoSize = true;
+            resources.ApplyResources(PaswordText, "PaswordText");
             PaswordText.BackColor = Color.Transparent;
-            PaswordText.Font = new Font("Berlin Sans FB Demi", 24F, FontStyle.Bold);
             PaswordText.ForeColor = Color.FromArgb(37, 23, 23);
-            PaswordText.ImeMode = ImeMode.NoControl;
-            PaswordText.Location = new Point(211, 193);
             PaswordText.Name = "PaswordText";
-            PaswordText.Size = new Size(158, 45);
-            PaswordText.TabIndex = 10;
-            PaswordText.Text = "Пароль";
             // 
             // loginText
             // 
-            loginText.AutoSize = true;
+            resources.ApplyResources(loginText, "loginText");
             loginText.BackColor = Color.Transparent;
-            loginText.Font = new Font("Berlin Sans FB Demi", 24F, FontStyle.Bold);
             loginText.ForeColor = Color.FromArgb(37, 23, 23);
-            loginText.ImeMode = ImeMode.NoControl;
-            loginText.Location = new Point(239, 135);
             loginText.Name = "loginText";
-            loginText.Size = new Size(130, 45);
-            loginText.TabIndex = 9;
-            loginText.Text = "Логин";
             // 
             // title
             // 
-            title.AutoSize = true;
+            resources.ApplyResources(title, "title");
             title.BackColor = Color.Transparent;
-            title.Font = new Font("Berlin Sans FB", 36F, FontStyle.Bold);
             title.ForeColor = Color.FromArgb(37, 23, 23);
-            title.ImeMode = ImeMode.NoControl;
-            title.Location = new Point(321, 18);
             title.Name = "title";
-            title.Size = new Size(174, 75);
-            title.TabIndex = 8;
-            title.Text = "Вход";
             // 
             // button1
             // 
-            button1.AutoSize = true;
+            resources.ApplyResources(button1, "button1");
             button1.BackColor = Color.Transparent;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Berlin Sans FB", 13.8F);
-            button1.ImeMode = ImeMode.NoControl;
-            button1.Location = new Point(295, 389);
             button1.Name = "button1";
-            button1.Size = new Size(200, 38);
-            button1.TabIndex = 16;
-            button1.Text = "Сменить язык";
             button1.UseVisualStyleBackColor = false;
             // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.коричнеый_фон;
-            BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(800, 450);
             Controls.Add(button1);
             Controls.Add(RegistrtionButton);
             Controls.Add(label1);
@@ -169,8 +117,6 @@
             Controls.Add(loginText);
             Controls.Add(title);
             Name = "LoginForm";
-            StartPosition = FormStartPosition.CenterParent;
-            Text = "Вход";
             ResumeLayout(false);
             PerformLayout();
         }

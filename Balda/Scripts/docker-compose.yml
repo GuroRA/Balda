@@ -1,0 +1,16 @@
+﻿version: "3.9"
+services:
+  db:
+    image: balda-postgres:latest
+    container_name: balda-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: balda
+      POSTGRES_PASSWORD: gevgehev
+      POSTGRES_DB: usersbd
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

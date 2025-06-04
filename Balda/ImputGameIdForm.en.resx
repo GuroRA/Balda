@@ -117,46 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="registrationButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="registrationButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="registrationButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB, 13.8pt</value>
+  <data name="idLable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>265, 35</value>
   </data>
-  <data name="registrationButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 38</value>
+  <data name="idLable.Text" xml:space="preserve">
+    <value>Enter the room's id</value>
   </data>
-  <data name="registrationButton.Text" xml:space="preserve">
-    <value>Зарегистрироваться</value>
+  <data name="gameIdTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>376, 211</value>
   </data>
-  <data name="paswordTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB, 12pt</value>
+  <data name="submitIdButton.Text" xml:space="preserve">
+    <value>enter</value>
   </data>
-  <data name="paswordTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 29</value>
-  </data>
-  <data name="loginTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB, 12pt</value>
-  </data>
-  <data name="loginTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 29</value>
-  </data>
-  <data name="repeatPaswordTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB, 12pt</value>
-  </data>
-  <data name="repeatPaswordTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 29</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>room's Id</value>
   </data>
 </root>
