@@ -165,8 +165,7 @@ namespace Balda
 
         private string GetRandomFiveLetterWord()
         {
-            // Надо подправить
-            string[] fiveLetterWords = { "БАЛДА", "СЛОВО", "СИРОП", "ЛОДКА", "РЕБРО" };
+            string[] fiveLetterWords = { "БАЛДА", "СЛОВО", "СИРОП", "ЛОДКА", "РЕБРО", "АВТОР", "АГЕНТ", "АДРЕС", "БУФЕТ", "ВЕСНА", "ВОЛНА", "ГРАНИ" };
             Random random = new Random();
             int index = random.Next(fiveLetterWords.Length);
             return fiveLetterWords[index];

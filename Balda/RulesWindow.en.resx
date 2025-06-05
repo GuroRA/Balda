@@ -128,17 +128,16 @@
     <value>12, 162</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>825, 232</value>
+    <value>819, 203</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Players take turns adding one letter to an existing word on the board to
- make a new real word. Players take turns adding one letter to an existing
- word on the board to make a new real word.
+make a new real word. Players take turns adding one letter to an existing
+word on the board to make a new real word.
 A move can be made in any direction (left, right, up, down).
 For each word, the player gets points equal to the length of the word.
 The game is usually played on a 5×5 field. The winner is the one who gets
-more points. The game ends when there are
- there are no empty squares or players have missed a turn twice.
+more points. The game ends when there are there are no empty squares.
 </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
