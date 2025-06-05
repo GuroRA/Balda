@@ -129,6 +129,13 @@
   <data name="&gt;&gt;Column3.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="rightPlayerLableName.Text" xml:space="preserve">
+    <value>Анжела</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Column2.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
   <data name="&gt;&gt;leftPlayerLabelName.Name" xml:space="preserve">
     <value>leftPlayerLabelName</value>
   </data>
@@ -136,13 +143,12 @@
   <data name="skipButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
-  <data name="&gt;&gt;Column4.Name" xml:space="preserve">
-    <value>Column4</value>
+  <data name="&gt;&gt;rightPlayerLabelScore.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -152,9 +158,6 @@
   </data>
   <data name="leftPlayerLabelScore.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="&gt;&gt;leftPlayerLabelName.ZOrder" xml:space="preserve">
-    <value>8</value>
   </data>
   <data name="&gt;&gt;rightPlayerLableName.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -168,8 +171,8 @@
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
     <value>Berlin Sans FB, 16.2pt, style=Bold</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="skipButton.Text" xml:space="preserve">
+    <value>Пропуск хода</value>
   </data>
   <data name="acceptButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>600, 340</value>
@@ -177,8 +180,8 @@
   <data name="leftPlayerLabelScore.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 29</value>
   </data>
-  <data name="Column4.HeaderText" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;leftPlayerLabelScore.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;Column1.Name" xml:space="preserve">
     <value>Column1</value>
@@ -192,11 +195,20 @@
   <data name="clearButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Berlin Sans FB, 10.8pt</value>
   </data>
-  <data name="leftPlayerLabelScore.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB, 13.8pt, style=Bold</value>
+  <data name="&gt;&gt;leftPlayerLabelName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="leftPlayerLabelName.Font" type="System.Drawing.Font, System.Drawing">
     <value>Berlin Sans FB, 13.8pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;rightPlayerLabelScore.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -207,20 +219,14 @@
   <data name="skipButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>600, 398</value>
   </data>
-  <data name="skipButton.Text" xml:space="preserve">
-    <value>Пропуск хода</value>
-  </data>
-  <data name="Column1.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
   <data name="leftPlayerLabelScore.Location" type="System.Drawing.Point, System.Drawing">
     <value>76, 98</value>
   </data>
   <data name="GameField.Location" type="System.Drawing.Point, System.Drawing">
     <value>263, 122</value>
   </data>
-  <data name="skipButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>None</value>
+  <data name="&gt;&gt;acceptButton.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Вы</value>
@@ -228,11 +234,14 @@
   <data name="&gt;&gt;GameField.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="rightPlayerLabelScore.Text" xml:space="preserve">
+    <value>Счёт: 35</value>
+  </data>
   <data name="skipButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 36</value>
   </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 35</value>
+  <data name="&gt;&gt;acceptButton.Name" xml:space="preserve">
+    <value>acceptButton</value>
   </data>
   <data name="&gt;&gt;rightPlayerLabelScore.Parent" xml:space="preserve">
     <value>$this</value>
@@ -243,14 +252,11 @@
   <data name="&gt;&gt;skipButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;leftPlayerLabelScore.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="GameField.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>51</value>
   </data>
-  <data name="acceptButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+  <data name="&gt;&gt;leftPlayerLabelScore.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="rightPlayerLabelScore.Font" type="System.Drawing.Font, System.Drawing">
     <value>Berlin Sans FB, 13.8pt, style=Bold</value>
@@ -258,16 +264,16 @@
   <data name="$this.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;wordTextBox.Name" xml:space="preserve">
+    <value>wordTextBox</value>
   </data>
-  <data name="leftPlayerLabelScore.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="leftPlayerLabelScore.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Berlin Sans FB, 13.8pt, style=Bold</value>
   </data>
-  <data name="clearButton.Text" xml:space="preserve">
-    <value>Очистить </value>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Противник</value>
   </data>
-  <data name="rightPlayerLabelScore.TabIndex" type="System.Int32, mscorlib">
+  <data name="Column1.MinimumWidth" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
@@ -276,14 +282,20 @@
   <data name="GameField.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;clearButton.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;GameField.Name" xml:space="preserve">
+    <value>GameField</value>
   </data>
   <data name="&gt;&gt;GameField.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;acceptButton.Name" xml:space="preserve">
-    <value>acceptButton</value>
+  <data name="Column3.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="rightPlayerLableName.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;leftPlayerLabelName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Column4.MinimumWidth" type="System.Int32, mscorlib">
     <value>6</value>
@@ -294,11 +306,8 @@
   <data name="leftPlayerLabelScore.Text" xml:space="preserve">
     <value>Счёт: 25</value>
   </data>
-  <data name="&gt;&gt;acceptButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="leftPlayerLabelName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>76, 69</value>
+  <data name="&gt;&gt;Column1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="clearButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>99, 398</value>
@@ -306,20 +315,14 @@
   <data name="Column4.Width" type="System.Int32, mscorlib">
     <value>125</value>
   </data>
-  <data name="&gt;&gt;wordTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;skipButton.ZOrder" xml:space="preserve">
+  <data name="leftPlayerLabelName.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Балда</value>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="wordTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>208, 20</value>
-  </data>
-  <data name="acceptButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB, 10.8pt</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>99, 34</value>
@@ -327,8 +330,8 @@
   <data name="rightPlayerLableName.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="wordTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>319, 74</value>
+  <data name="rightPlayerLableName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Berlin Sans FB, 13.8pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;rightPlayerLabelScore.Name" xml:space="preserve">
     <value>rightPlayerLabelScore</value>
@@ -345,23 +348,20 @@
   <data name="&gt;&gt;acceptButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;clearButton.Name" xml:space="preserve">
-    <value>clearButton</value>
-  </data>
   <data name="rightPlayerLabelScore.Location" type="System.Drawing.Point, System.Drawing">
     <value>618, 98</value>
   </data>
-  <data name="&gt;&gt;leftPlayerLabelName.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;Column4.Name" xml:space="preserve">
+    <value>Column4</value>
   </data>
-  <data name="rightPlayerLableName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>618, 69</value>
+  <data name="rightPlayerLableName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 29</value>
   </data>
   <data name="clearButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
-  <data name="&gt;&gt;rightPlayerLabelScore.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;leftPlayerLabelScore.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="&gt;&gt;Column4.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -369,20 +369,14 @@
   <data name="wordTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="skipButton.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="&gt;&gt;acceptButton.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="rightPlayerLableName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB, 13.8pt, style=Bold</value>
+  <data name="wordTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>319, 74</value>
   </data>
   <data name="leftPlayerLabelName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>GameForm</value>
-  </data>
-  <data name="&gt;&gt;rightPlayerLableName.Name" xml:space="preserve">
-    <value>rightPlayerLableName</value>
   </data>
   <data name="Column5.MinimumWidth" type="System.Int32, mscorlib">
     <value>6</value>
@@ -402,23 +396,23 @@
   <data name="clearButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="&gt;&gt;rightPlayerLableName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;wordTextBox.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="skipButton.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
   <data name="acceptButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="&gt;&gt;wordTextBox.Name" xml:space="preserve">
-    <value>wordTextBox</value>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Berlin Sans FB, 16.2pt, style=Bold</value>
   </data>
-  <data name="Column2.HeaderText" xml:space="preserve">
-    <value />
+  <data name="skipButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
   </data>
   <data name="&gt;&gt;clearButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -426,23 +420,23 @@
   <data name="&gt;&gt;Column2.Name" xml:space="preserve">
     <value>Column2</value>
   </data>
-  <data name="Column1.HeaderText" xml:space="preserve">
+  <data name="Column4.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;rightPlayerLabelScore.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="leftPlayerLabelName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>76, 69</value>
   </data>
   <data name="acceptButton.Text" xml:space="preserve">
     <value>Подтвердить </value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Противник</value>
+  <data name="Column2.HeaderText" xml:space="preserve">
+    <value />
   </data>
-  <data name="rightPlayerLableName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 29</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Балда</value>
   </data>
-  <data name="rightPlayerLabelScore.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>GameForm</value>
   </data>
   <data name="rightPlayerLabelScore.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 29</value>
@@ -450,44 +444,47 @@
   <data name="GameField.Size" type="System.Drawing.Size, System.Drawing">
     <value>307, 312</value>
   </data>
-  <data name="&gt;&gt;rightPlayerLableName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="acceptButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Berlin Sans FB, 10.8pt</value>
   </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB, 16.2pt, style=Bold</value>
-  </data>
-  <data name="rightPlayerLableName.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="Column1.Width" type="System.Int32, mscorlib">
-    <value>125</value>
+  <data name="&gt;&gt;clearButton.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;GameField.Name" xml:space="preserve">
-    <value>GameField</value>
+  <data name="Column1.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;leftPlayerLabelName.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="rightPlayerLabelScore.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
   <data name="acceptButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 36</value>
   </data>
-  <data name="rightPlayerLabelScore.Text" xml:space="preserve">
-    <value>Счёт: 35</value>
+  <data name="clearButton.Text" xml:space="preserve">
+    <value>Очистить </value>
   </data>
-  <data name="&gt;&gt;skipButton.Name" xml:space="preserve">
-    <value>skipButton</value>
+  <data name="leftPlayerLabelScore.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="rightPlayerLabelScore.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;label6.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="Column2.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="rightPlayerLableName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>618, 69</value>
   </data>
-  <data name="Column3.HeaderText" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;wordTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="leftPlayerLabelName.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 29</value>
-  </data>
-  <data name="&gt;&gt;acceptButton.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="Column5.HeaderText" xml:space="preserve">
     <value />
@@ -501,7 +498,10 @@
   <data name="skipButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Berlin Sans FB, 10.8pt</value>
   </data>
-  <data name="&gt;&gt;leftPlayerLabelName.Type" xml:space="preserve">
+  <data name="&gt;&gt;skipButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;clearButton.Parent" xml:space="preserve">
@@ -510,35 +510,35 @@
   <data name="Column3.MinimumWidth" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;Column1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="rightPlayerLableName.Text" xml:space="preserve">
-    <value>Анжела</value>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 35</value>
   </data>
   <data name="&gt;&gt;Column3.Name" xml:space="preserve">
     <value>Column3</value>
   </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;skipButton.Name" xml:space="preserve">
+    <value>skipButton</value>
   </data>
-  <data name="&gt;&gt;leftPlayerLabelScore.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="acceptButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;rightPlayerLableName.Name" xml:space="preserve">
+    <value>rightPlayerLableName</value>
   </data>
   <data name="&gt;&gt;rightPlayerLableName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="leftPlayerLabelName.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;clearButton.Name" xml:space="preserve">
+    <value>clearButton</value>
   </data>
   <data name="&gt;&gt;skipButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;leftPlayerLabelScore.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Column1.Width" type="System.Int32, mscorlib">
+    <value>125</value>
+  </data>
+  <data name="&gt;&gt;wordTextBox.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
     <value>en</value>

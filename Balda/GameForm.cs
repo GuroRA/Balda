@@ -299,6 +299,7 @@ namespace Balda
                     _leftPlayerId = player1?.Id;
                     _rightPlayerId = player2?.Id;
 
+
                 }
                 UpdatePlayerLabels();
             }

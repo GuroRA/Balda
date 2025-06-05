@@ -58,7 +58,7 @@
             GameField.AllowUserToResizeColumns = false;
             GameField.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Berlin Sans FB", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             GameField.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             GameField.BackgroundColor = Color.White;
             GameField.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
