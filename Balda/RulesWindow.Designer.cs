@@ -35,42 +35,27 @@
             // 
             // title
             // 
-            title.AutoSize = true;
+            resources.ApplyResources(title, "title");
             title.BackColor = Color.Transparent;
-            title.Font = new Font("Berlin Sans FB", 36F, FontStyle.Bold);
             title.ForeColor = Color.FromArgb(37, 23, 23);
-            title.ImeMode = ImeMode.NoControl;
-            title.Location = new Point(290, 49);
             title.Name = "title";
-            title.Size = new Size(281, 75);
-            title.TabIndex = 9;
-            title.Text = "Правила";
             // 
             // label1
             // 
-            label1.AutoSize = true;
+            resources.ApplyResources(label1, "label1");
             label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Berlin Sans FB", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(37, 23, 23);
-            label1.Location = new Point(26, 162);
             label1.Name = "label1";
-            label1.Size = new Size(783, 203);
-            label1.TabIndex = 10;
-            label1.Text = resources.GetString("label1.Text");
             // 
             // RulesWindow
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.коричнеый_фон;
-            BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(836, 450);
             Controls.Add(label1);
             Controls.Add(title);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "RulesWindow";
-            StartPosition = FormStartPosition.CenterParent;
-            Text = "Правила игры";
             ResumeLayout(false);
             PerformLayout();
         }

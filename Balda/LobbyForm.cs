@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NLog;
+using System.Resources;
 using System.Text;
 
 namespace Balda
@@ -20,9 +21,20 @@ namespace Balda
         {
             _userId = userId;
             InitializeComponent();
+            UpdateUIStrings();
         }
 
         private readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        private readonly LanguageManager _languageManager = new LanguageManager();
+
+        private void UpdateUIStrings()
+        {
+            ResourceManager resourceManager = new ResourceManager("Balda.LobbyForm", typeof(LobbyForm).Assembly);
+            this.Text = _languageManager.GetString("$this.Text", "Balda.LobbyForm");
+            CreateGame.Text = _languageManager.GetString("CreateGame.Text", "Balda.LobbyForm");
+            ConnectButton.Text = _languageManager.GetString("ConnectButton.Text", "Balda.LobbyForm");
+            rulesButton.Text = _languageManager.GetString("rulesButton.Text", "Balda.LobbyForm");
+        }
 
         private void CreateGame_Click(object sender, EventArgs e)
         {
@@ -40,7 +52,7 @@ namespace Balda
                 var creatorUser = db.Users.FirstOrDefault(u => u.Id == creatorUserId);
                 if (creatorUser == null)
                 {
-                    MessageBox.Show("Пользователь не найден.");
+                    MessageBox.Show(_languageManager.GetString("UserNotFoundMessage", "Balda.Resources.MessageSources"));
                     return;
                 }
 
@@ -58,7 +70,7 @@ namespace Balda
 
                 _gameId = newGame.Id;
                 Clipboard.SetText(_gameId.ToString());
-                MessageBox.Show($"Id вашей игры: {newGame.Id} скопирован в буфер обмена");
+                MessageBox.Show(_languageManager.GetString("IdWasCopiedMessage", "Balda.Resources.MessageSources"));
                 WaitForSecondPlayer(newGame.Id, newGame.CurrentPlayerTurn);
             }
         }
@@ -72,26 +84,26 @@ namespace Balda
                     var game = db.Games.Include(g => g.Users).FirstOrDefault(g => g.Id == gameId);
                     if (game == null)
                     {
-                        MessageBox.Show("Игра не найдена.");
+                        MessageBox.Show(_languageManager.GetString("GameNotFoundMessage", "Balda.Resources.MessageSources"));
                         return;
                     }
 
                     if (game.Users.Any(p => p.Id == _userId))
                     {
-                        MessageBox.Show("Вы уже в этой игре.");
+                        MessageBox.Show(_languageManager.GetString("YouAlreadyInGameMessage", "Balda.Resources.MessageSources"));
                         return;
                     }
 
                     if (game.Users.Count >= 2)
                     {
-                        MessageBox.Show("В игре уже два игрока.");
+                        MessageBox.Show(_languageManager.GetString("GameFullMessage", "Balda.Resources.MessageSources"));
                         return;
                     }
 
                     var user = db.Users.FirstOrDefault(u => u.Id == _userId);
                     if (user == null)
                     {
-                        MessageBox.Show("Пользователь не найден.");
+                        MessageBox.Show(_languageManager.GetString("UserNotFoundMessage", "Balda.Resources.MessageSources"));
                         return;
                     }
 
@@ -107,7 +119,7 @@ namespace Balda
             catch (Exception ex)
             {
                 Logger.Error(ex, $"Не удалось подключиться к игре {gameId}");
-                MessageBox.Show($"Не удалось подключиться к игре: {ex.Message}");
+                MessageBox.Show($"{_languageManager.GetString("ErrorMessagePrefix", "Balda.Resources.MessageSources")}: {ex.Message}");
             }
         }
 

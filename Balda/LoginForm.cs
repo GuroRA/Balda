@@ -1,4 +1,6 @@
 ﻿using NLog;
+using System.Globalization;
+using System.Resources;
 
 namespace Balda
 {
@@ -13,9 +15,24 @@ namespace Balda
         public LoginForm()
         {
             InitializeComponent();
+            UpdateUIStrings();
         }
 
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        private readonly LanguageManager _languageManager = new LanguageManager();
+
+        private void UpdateUIStrings()
+        {
+            ResourceManager resourceManager = new ResourceManager("Balda.LoginForm", typeof(LoginForm).Assembly);
+            this.Text = _languageManager.GetString("$this.Text", "Balda.LoginForm");
+            title.Text = _languageManager.GetString("title.Text", "Balda.LoginForm");
+            loginText.Text = _languageManager.GetString("loginText.Text", "Balda.LoginForm");
+            PaswordText.Text = _languageManager.GetString("PaswordText.Text", "Balda.LoginForm");
+            loginButton.Text = _languageManager.GetString("loginButton.Text", "Balda.LoginForm");
+            RegistrtionButton.Text = _languageManager.GetString("RegistrtionButton.Text", "Balda.LoginForm");
+            NoAccText.Text = _languageManager.GetString("NoAccText.Text", "Balda.LoginForm");
+            ChangeLanguageButton.Text = _languageManager.GetString("ChangeLanguageButton.Text", "Balda.LoginForm");
+        }
 
         private void RegistrtionButton_Click(object sender, EventArgs e)
         {
@@ -31,13 +48,13 @@ namespace Balda
 
             if (string.IsNullOrEmpty(login))
             {
-                MessageBox.Show("Введите логин");
+                MessageBox.Show(_languageManager.GetString("LoginRequiredMessage", "Balda.Resources.MessageSources"));
                 return;
             }
 
             if (string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Введите пароль");
+                MessageBox.Show(_languageManager.GetString("PasswordRequiredMessage", "Balda.Resources.MessageSources"));
                 return;
             }
 
@@ -57,15 +74,23 @@ namespace Balda
                     }
                     else
                     {
-                        MessageBox.Show("неверный логин или пароль");
+                        MessageBox.Show(_languageManager.GetString("InvalidLoginPasswordMessage", "Balda.Resources.MessageSources"));
                     }
                 }
             }
             catch (Exception ex)
             {
                 Logger.Info($"Ошибка при авторизации", ex.Message);
-                MessageBox.Show($"Ошибка: {ex.Message}");
+                MessageBox.Show($"{_languageManager.GetString("ErrorMessagePrefix", "Balda.Resources.MessageSources")}: {ex.Message}");
             }
+        }
+
+        private void ChangeLanguageButton_Click(object sender, EventArgs e)
+        {
+            _languageManager.ToggleLanguage();
+            UpdateUIStrings();
+            Properties.Settings1.Default.SelectedLanguage = _languageManager.CurrentCulture.Name;
+            Properties.Settings1.Default.Save();
         }
 
     }

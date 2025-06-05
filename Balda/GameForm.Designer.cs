@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameForm));
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             GameField = new DataGridView();
             Column1 = new DataGridViewButtonColumn();
             Column2 = new DataGridViewButtonColumn();
@@ -46,7 +46,7 @@
             wordTextBox = new TextBox();
             skipButton = new Button();
             acceptButton = new Button();
-            button1 = new Button();
+            clearButton = new Button();
             ((System.ComponentModel.ISupportInitialize)GameField).BeginInit();
             SuspendLayout();
             // 
@@ -57,17 +57,17 @@
             GameField.AllowUserToDeleteRows = false;
             GameField.AllowUserToResizeColumns = false;
             GameField.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Berlin Sans FB", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            GameField.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Berlin Sans FB", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GameField.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             GameField.BackgroundColor = Color.White;
             GameField.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             GameField.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
             GameField.MultiSelect = false;
             GameField.Name = "GameField";
             GameField.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            GameField.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            GameField.RowsDefaultCellStyle = dataGridViewCellStyle2;
             GameField.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Column1
@@ -133,7 +133,6 @@
             resources.ApplyResources(rightPlayerLabelScore, "rightPlayerLabelScore");
             rightPlayerLabelScore.BackColor = Color.Transparent;
             rightPlayerLabelScore.Name = "rightPlayerLabelScore";
-            rightPlayerLabelScore.Click += label4_Click;
             // 
             // rightPlayerLableName
             // 
@@ -172,21 +171,21 @@
             acceptButton.UseVisualStyleBackColor = false;
             acceptButton.Click += acceptButton_Click;
             // 
-            // button1
+            // clearButton
             // 
-            resources.ApplyResources(button1, "button1");
-            button1.BackColor = Color.White;
-            button1.ForeColor = Color.Black;
-            button1.Name = "button1";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            resources.ApplyResources(clearButton, "clearButton");
+            clearButton.BackColor = Color.White;
+            clearButton.ForeColor = Color.Black;
+            clearButton.Name = "clearButton";
+            clearButton.UseVisualStyleBackColor = false;
+            clearButton.Click += button1_Click;
             // 
             // GameForm
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.коричнеый_фон;
-            Controls.Add(button1);
+            Controls.Add(clearButton);
             Controls.Add(acceptButton);
             Controls.Add(skipButton);
             Controls.Add(wordTextBox);
@@ -219,6 +218,6 @@
         private DataGridViewButtonColumn Column4;
         private DataGridViewButtonColumn Column5;
         private Button acceptButton;
-        private Button button1;
+        private Button clearButton;
     }
 }

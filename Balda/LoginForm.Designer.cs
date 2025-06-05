@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             RegistrtionButton = new Button();
-            label1 = new Label();
+            NoAccText = new Label();
             loginButton = new Button();
             paswordTextBox = new MaskedTextBox();
             loginTextBox = new TextBox();
             PaswordText = new Label();
             loginText = new Label();
             title = new Label();
-            button1 = new Button();
+            ChangeLanguageButton = new Button();
             SuspendLayout();
             // 
             // RegistrtionButton
@@ -48,12 +48,12 @@
             RegistrtionButton.UseVisualStyleBackColor = false;
             RegistrtionButton.Click += RegistrtionButton_Click;
             // 
-            // label1
+            // NoAccText
             // 
-            resources.ApplyResources(label1, "label1");
-            label1.BackColor = Color.Transparent;
-            label1.ForeColor = Color.FromArgb(37, 23, 23);
-            label1.Name = "label1";
+            resources.ApplyResources(NoAccText, "NoAccText");
+            NoAccText.BackColor = Color.Transparent;
+            NoAccText.ForeColor = Color.FromArgb(37, 23, 23);
+            NoAccText.Name = "NoAccText";
             // 
             // loginButton
             // 
@@ -95,21 +95,22 @@
             title.ForeColor = Color.FromArgb(37, 23, 23);
             title.Name = "title";
             // 
-            // button1
+            // ChangeLanguageButton
             // 
-            resources.ApplyResources(button1, "button1");
-            button1.BackColor = Color.Transparent;
-            button1.Name = "button1";
-            button1.UseVisualStyleBackColor = false;
+            resources.ApplyResources(ChangeLanguageButton, "ChangeLanguageButton");
+            ChangeLanguageButton.BackColor = Color.Transparent;
+            ChangeLanguageButton.Name = "ChangeLanguageButton";
+            ChangeLanguageButton.UseVisualStyleBackColor = false;
+            ChangeLanguageButton.Click += ChangeLanguageButton_Click;
             // 
             // LoginForm
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.коричнеый_фон;
-            Controls.Add(button1);
+            Controls.Add(ChangeLanguageButton);
             Controls.Add(RegistrtionButton);
-            Controls.Add(label1);
+            Controls.Add(NoAccText);
             Controls.Add(loginButton);
             Controls.Add(paswordTextBox);
             Controls.Add(loginTextBox);
@@ -124,13 +125,13 @@
         #endregion
 
         private Button RegistrtionButton;
-        private Label label1;
+        private Label NoAccText;
         private Button loginButton;
         private MaskedTextBox paswordTextBox;
         private TextBox loginTextBox;
         private Label PaswordText;
         private Label loginText;
         private Label title;
-        private Button button1;
+        private Button ChangeLanguageButton;
     }
 }

@@ -2,6 +2,8 @@
 using NLog;
 using Castle.Windsor;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Metadata;
+using System.Resources;
 
 namespace Balda
 {
@@ -57,6 +59,7 @@ namespace Balda
             CheckWhoseTurn();
             LoadPlayers();
             PollingMethod();
+            UpdateUIStrings();
         }
 
         /// <summary>
@@ -85,10 +88,22 @@ namespace Balda
             CheckWhoseTurn();
             LoadPlayers();
             PollingMethod();
+            UpdateUIStrings();
         }
 
         private readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        private readonly LanguageManager _languageManager = new LanguageManager();
 
+        private void UpdateUIStrings()
+        {
+            ResourceManager resourceManager = new ResourceManager("Balda.GameForm", typeof(GameForm).Assembly);
+            this.Text = _languageManager.GetString("$this.Text", "Balda.GameForm");
+            clearButton.Text = _languageManager.GetString("clearButton.Text", "Balda.GameForm");
+            acceptButton.Text = _languageManager.GetString("acceptButton.Text", "Balda.GameForm");
+            skipButton.Text = _languageManager.GetString("skipButton.Text", "Balda.GameForm");
+            label6.Text = _languageManager.GetString("label6.Text", "Balda.GameForm");
+            label1.Text = _languageManager.GetString("label1.Text", "Balda.GameForm");
+        }
         private void CheckWhoseTurn()
         {
             using (var db = new AppDbContext())
@@ -204,7 +219,7 @@ namespace Balda
         {
             if (_localUserId != _currentPlayerTurn)
             {
-                MessageBox.Show("Сейчас не ваш ход!");
+                MessageBox.Show(_languageManager.GetString("ItsNotYourTurnMessage", "Balda.Resources.MessageSources"));
                 GameField.ClearSelection();
                 return;
             }
@@ -522,20 +537,20 @@ namespace Balda
         {
             if (_localUserId != _currentPlayerTurn)
             {
-                MessageBox.Show("Сейчас не ваш ход!");
+                MessageBox.Show(_languageManager.GetString("ItsNotYourTurnMessage", "Balda.Resources.MessageSources"));
                 return;
             }
             string word = wordTextBox.Text.Trim().ToLower();
 
             if (string.IsNullOrEmpty(word))
             {
-                MessageBox.Show("Введите слово.");
+                MessageBox.Show(_languageManager.GetString("EnterTheWordMessage", "Balda.Resources.MessageSources"));
                 return;
             }
 
             if (!_wordValidator.IsValidWord(word))
             {
-                MessageBox.Show("Такого слова не существует.");
+                MessageBox.Show(_languageManager.GetString("WordDoesntExistMessage", "Balda.Resources.MessageSources"));
                 clearField();
                 ResetState();
                 return;
@@ -565,14 +580,14 @@ namespace Balda
 
             if (!isWordHasNewLetter)
             {
-                MessageBox.Show("Слово должно содержать добавленную букву.");
+                MessageBox.Show(_languageManager.GetString("MustContainMessage", "Balda.Resources.MessageSources"));
                 ResetState();
                 return;
             }
 
             if (_usedWords.Contains(word))
             {
-                MessageBox.Show("Такое слово уже было использовано.");
+                MessageBox.Show(_languageManager.GetString("WasUsedWordMessage", "Balda.Resources.MessageSources"));
                 clearField();
                 ResetState();
                 return;
@@ -613,10 +628,6 @@ namespace Balda
 
                 UpdateBoard();
                 UpdateButtonStates();
-            }
-            else
-            {
-                MessageBox.Show("Нет буквы для удаления.");
             }
         }
 
@@ -660,12 +671,7 @@ namespace Balda
                 UpdatePlayerLabels();
             }
 
-            MessageBox.Show($"Игра окончена! Победитель: {winnerName} ({winnerScore} очков)", "Конец игры");
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
+            MessageBox.Show($"{_languageManager.GetString("GameEndFirstPartMessage", "Balda.Resources.MessageSources")}: {winnerName} ({winnerScore} {_languageManager.GetString("GameEndSecondPartMessage", "Balda.Resources.MessageSources")}");
         }
 
         private void button1_Click(object sender, EventArgs e)

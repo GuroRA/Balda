@@ -117,134 +117,206 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="paswordTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>391, 198</value>
-  </data>
-  <data name="&gt;&gt;title.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="loginButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB, 13.8pt</value>
-  </data>
-  <data name="&gt;&gt;title.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="RegistrtionButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
+  <data name="RegistrtionButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
-  <data name="loginText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 135</value>
-  </data>
-  <data name="&gt;&gt;paswordTextBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="RegistrtionButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 38</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="RegistrtionButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Berlin Sans FB, 13.8pt</value>
   </data>
   <data name="RegistrtionButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="loginTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+  <data name="RegistrtionButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>444, 335</value>
   </data>
-  <data name="title.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="PaswordText.Text" xml:space="preserve">
-    <value>Пароль</value>
-  </data>
-  <data name="loginButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="title.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="PaswordText.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;loginTextBox.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;loginText.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="loginButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB Demi, 24pt, style=Bold</value>
-  </data>
-  <data name="PaswordText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>211, 193</value>
-  </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="RegistrtionButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 38</value>
   </data>
-  <data name="title.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB, 36pt, style=Bold</value>
-  </data>
-  <data name="&gt;&gt;loginButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="loginButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 269</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 450</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Нет аккаунта?</value>
-  </data>
-  <data name="&gt;&gt;PaswordText.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="PaswordText.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB Demi, 24pt, style=Bold</value>
-  </data>
-  <data name="loginButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 38</value>
-  </data>
-  <data name="RegistrtionButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="&gt;&gt;loginButton.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="RegistrtionButton.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
   </data>
   <data name="RegistrtionButton.Text" xml:space="preserve">
     <value>Регистрация</value>
   </data>
-  <data name="paswordTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+  <data name="&gt;&gt;RegistrtionButton.Name" xml:space="preserve">
+    <value>RegistrtionButton</value>
   </data>
-  <data name="loginText.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+  <data name="&gt;&gt;RegistrtionButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;RegistrtionButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;RegistrtionButton.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="button1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="NoAccText.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+  <data name="NoAccText.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Berlin Sans FB Demi, 24pt, style=Bold</value>
+  </data>
+  <data name="NoAccText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="NoAccText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 328</value>
+  </data>
+  <data name="NoAccText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 45</value>
+  </data>
+  <data name="NoAccText.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="NoAccText.Text" xml:space="preserve">
+    <value>Нет аккаунта?</value>
+  </data>
+  <data name="&gt;&gt;NoAccText.Name" xml:space="preserve">
+    <value>NoAccText</value>
+  </data>
+  <data name="&gt;&gt;NoAccText.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NoAccText.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;NoAccText.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="loginButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="loginButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="loginButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Berlin Sans FB, 13.8pt</value>
+  </data>
+  <data name="loginButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="loginButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>321, 269</value>
+  </data>
+  <data name="loginButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 38</value>
+  </data>
+  <data name="loginButton.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="loginButton.Text" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="&gt;&gt;loginButton.Name" xml:space="preserve">
+    <value>loginButton</value>
+  </data>
+  <data name="&gt;&gt;loginButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;loginButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;loginButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="paswordTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Berlin Sans FB, 12pt</value>
+  </data>
+  <data name="paswordTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>391, 198</value>
+  </data>
+  <data name="paswordTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 29</value>
+  </data>
+  <data name="paswordTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;paswordTextBox.Name" xml:space="preserve">
+    <value>paswordTextBox</value>
+  </data>
+  <data name="&gt;&gt;paswordTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;paswordTextBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;paswordTextBox.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="loginTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Berlin Sans FB, 12pt</value>
+  </data>
+  <data name="loginTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>391, 145</value>
+  </data>
+  <data name="loginTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 29</value>
+  </data>
+  <data name="loginTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;loginTextBox.Name" xml:space="preserve">
+    <value>loginTextBox</value>
+  </data>
+  <data name="&gt;&gt;loginTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;loginTextBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;loginTextBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="PaswordText.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="PaswordText.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Berlin Sans FB Demi, 24pt, style=Bold</value>
+  </data>
+  <data name="PaswordText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="PaswordText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>211, 193</value>
+  </data>
+  <data name="PaswordText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 45</value>
+  </data>
+  <data name="PaswordText.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="PaswordText.Text" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="&gt;&gt;PaswordText.Name" xml:space="preserve">
+    <value>PaswordText</value>
+  </data>
+  <data name="&gt;&gt;PaswordText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PaswordText.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PaswordText.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="loginText.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="loginText.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Berlin Sans FB Demi, 24pt, style=Bold</value>
+  </data>
+  <data name="loginText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="loginText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>239, 135</value>
   </data>
   <data name="loginText.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 45</value>
@@ -252,41 +324,29 @@
   <data name="loginText.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="loginText.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB Demi, 24pt, style=Bold</value>
+  <data name="loginText.Text" xml:space="preserve">
+    <value>Логин</value>
   </data>
   <data name="&gt;&gt;loginText.Name" xml:space="preserve">
     <value>loginText</value>
   </data>
-  <data name="loginButton.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;RegistrtionButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;loginTextBox.Name" xml:space="preserve">
-    <value>loginTextBox</value>
-  </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>157, 328</value>
-  </data>
-  <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB, 13.8pt</value>
-  </data>
-  <data name="&gt;&gt;loginButton.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="&gt;&gt;loginText.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="loginTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB, 12pt</value>
+  <data name="&gt;&gt;loginText.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;loginText.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="title.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="title.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Berlin Sans FB, 36pt, style=Bold</value>
+  </data>
+  <data name="title.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="title.Location" type="System.Drawing.Point, System.Drawing">
     <value>321, 18</value>
@@ -294,101 +354,11 @@
   <data name="title.Size" type="System.Drawing.Size, System.Drawing">
     <value>174, 75</value>
   </data>
-  <data name="&gt;&gt;RegistrtionButton.Name" xml:space="preserve">
-    <value>RegistrtionButton</value>
-  </data>
-  <data name="button1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="&gt;&gt;PaswordText.Name" xml:space="preserve">
-    <value>PaswordText</value>
-  </data>
-  <data name="RegistrtionButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RegistrtionButton.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;PaswordText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>295, 389</value>
-  </data>
-  <data name="PaswordText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 45</value>
-  </data>
-  <data name="loginTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 29</value>
-  </data>
-  <data name="RegistrtionButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB, 13.8pt</value>
-  </data>
-  <data name="loginTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>391, 145</value>
-  </data>
-  <data name="loginText.Text" xml:space="preserve">
-    <value>Логин</value>
-  </data>
-  <data name="loginText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="paswordTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Berlin Sans FB, 12pt</value>
-  </data>
-  <data name="loginButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="RegistrtionButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>444, 335</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 45</value>
-  </data>
-  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;RegistrtionButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;loginButton.Name" xml:space="preserve">
-    <value>loginButton</value>
-  </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Сменить язык</value>
-  </data>
-  <data name="title.Text" xml:space="preserve">
-    <value>Вход</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>LoginForm</value>
-  </data>
   <data name="title.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
-  </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;paswordTextBox.Name" xml:space="preserve">
-    <value>paswordTextBox</value>
-  </data>
-  <data name="&gt;&gt;paswordTextBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="title.Text" xml:space="preserve">
+    <value>Вход</value>
   </data>
   <data name="&gt;&gt;title.Name" xml:space="preserve">
     <value>title</value>
@@ -396,40 +366,70 @@
   <data name="&gt;&gt;title.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Вход</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 20</value>
-  </data>
-  <data name="&gt;&gt;paswordTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="paswordTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 29</value>
-  </data>
-  <data name="&gt;&gt;loginTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="PaswordText.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="loginButton.Text" xml:space="preserve">
-    <value>Войти</value>
-  </data>
-  <data name="&gt;&gt;loginTextBox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;title.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;PaswordText.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;title.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
-  <data name="&gt;&gt;loginText.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="ChangeLanguageButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="PaswordText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="ChangeLanguageButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="ChangeLanguageButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Berlin Sans FB, 13.8pt</value>
+  </data>
+  <data name="ChangeLanguageButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="ChangeLanguageButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>295, 389</value>
+  </data>
+  <data name="ChangeLanguageButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 38</value>
+  </data>
+  <data name="ChangeLanguageButton.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="ChangeLanguageButton.Text" xml:space="preserve">
+    <value>Сменить язык</value>
+  </data>
+  <data name="&gt;&gt;ChangeLanguageButton.Name" xml:space="preserve">
+    <value>ChangeLanguageButton</value>
+  </data>
+  <data name="&gt;&gt;ChangeLanguageButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ChangeLanguageButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ChangeLanguageButton.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 20</value>
+  </data>
+  <data name="$this.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 450</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>LoginForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
