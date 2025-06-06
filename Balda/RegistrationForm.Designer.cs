@@ -105,6 +105,7 @@
             Controls.Add(loginTextBox);
             Controls.Add(PaswordRegistrationText);
             Controls.Add(loginRegistrationText);
+            MaximizeBox = false;
             Name = "RegistrationForm";
             ResumeLayout(false);
             PerformLayout();

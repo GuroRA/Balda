@@ -55,6 +55,7 @@
             Controls.Add(label1);
             Controls.Add(title);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            MinimizeBox = false;
             Name = "RulesWindow";
             ResumeLayout(false);
             PerformLayout();

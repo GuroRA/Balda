@@ -36,27 +36,27 @@
             // 
             // CreateGame
             // 
-            resources.ApplyResources(CreateGame, "CreateGame");
             CreateGame.BackColor = Color.White;
             CreateGame.Cursor = Cursors.Hand;
+            resources.ApplyResources(CreateGame, "CreateGame");
             CreateGame.Name = "CreateGame";
             CreateGame.UseVisualStyleBackColor = false;
             CreateGame.Click += CreateGame_Click;
             // 
             // ConnectButton
             // 
-            resources.ApplyResources(ConnectButton, "ConnectButton");
             ConnectButton.BackColor = Color.White;
             ConnectButton.Cursor = Cursors.Hand;
+            resources.ApplyResources(ConnectButton, "ConnectButton");
             ConnectButton.Name = "ConnectButton";
             ConnectButton.UseVisualStyleBackColor = false;
             ConnectButton.Click += ConnectButton_Click;
             // 
             // rulesButton
             // 
-            resources.ApplyResources(rulesButton, "rulesButton");
             rulesButton.BackColor = Color.White;
             rulesButton.Cursor = Cursors.Hand;
+            resources.ApplyResources(rulesButton, "rulesButton");
             rulesButton.Name = "rulesButton";
             rulesButton.UseVisualStyleBackColor = false;
             rulesButton.Click += rulesButton_Click;
@@ -69,6 +69,7 @@
             Controls.Add(rulesButton);
             Controls.Add(ConnectButton);
             Controls.Add(CreateGame);
+            MaximizeBox = false;
             Name = "LobbyForm";
             ResumeLayout(false);
         }

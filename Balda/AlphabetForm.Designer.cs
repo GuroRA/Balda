@@ -36,6 +36,7 @@
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.коричнеый_фон;
+            MaximizeBox = false;
             Name = "AlphabetForm";
             ResumeLayout(false);
         }

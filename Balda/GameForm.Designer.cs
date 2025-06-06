@@ -196,6 +196,7 @@
             Controls.Add(leftPlayerLabelName);
             Controls.Add(label1);
             Controls.Add(GameField);
+            MaximizeBox = false;
             Name = "GameForm";
             ((System.ComponentModel.ISupportInitialize)GameField).EndInit();
             ResumeLayout(false);

@@ -117,6 +117,7 @@
             Controls.Add(PaswordText);
             Controls.Add(loginText);
             Controls.Add(title);
+            MaximizeBox = false;
             Name = "LoginForm";
             ResumeLayout(false);
             PerformLayout();

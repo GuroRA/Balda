@@ -47,8 +47,8 @@
             // 
             // submitIdButton
             // 
-            resources.ApplyResources(submitIdButton, "submitIdButton");
             submitIdButton.BackColor = Color.White;
+            resources.ApplyResources(submitIdButton, "submitIdButton");
             submitIdButton.Name = "submitIdButton";
             submitIdButton.UseVisualStyleBackColor = false;
             submitIdButton.Click += submitIdButton_Click;
@@ -61,6 +61,7 @@
             Controls.Add(submitIdButton);
             Controls.Add(gameIdTextBox);
             Controls.Add(idLable);
+            MaximizeBox = false;
             Name = "ImputGameIdForm";
             ResumeLayout(false);
             PerformLayout();
